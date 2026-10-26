@@ -88,8 +88,8 @@ npm run make -- video-NNN --skip-voice     # check -> typecheck -> long video + 
 ```
 The long video renders at about 3–4 frames per second on 4 CPUs (a 7-minute video takes about an
 hour). Run it in the background. Then set `status: "rendered"` and `runtime` in `video.json`,
-`npm run index`, and commit **only `stickman-show/`** (outputs and audio go to Git LFS
-automatically) on the session's branch and push.
+`npm run index`, and commit **only `stickman-show/`** on the session's branch and push. Media is
+plain git (GitHub blocks LFS on forks), so check every output file is under 100 MB.
 
 ## Token budget rules
 

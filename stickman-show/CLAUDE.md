@@ -13,4 +13,5 @@ Rules that always apply:
   (one image).
 - Never invent numbers. Figures on screen are labelled as examples with their assumptions.
 - The voice must stay commercially licensed (see `channel/characters.md`, Sound).
-- Big files (`videos/*/output/`, `videos/*/audio/`) are Git LFS. Never commit renders elsewhere.
+- Finished files go only in `videos/*/output/` and must stay under 100 MB each (plain git: GitHub
+  blocks LFS on forks). Never commit scratch renders (`out/` is ignored).

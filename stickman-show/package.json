@@ -31,7 +31,7 @@
   "scripts": {
     "studio": "remotion studio",
     "new-video": "node tools/new-video.mjs",
-    "voice": "python3 tools/tts.py",
+    "voice": "tools/.venv/bin/python tools/tts.py",
     "render": "node tools/render.mjs",
     "stills": "node tools/stills.mjs",
     "index": "node tools/index.mjs",

@@ -4,9 +4,6 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-git lfs install --local >/dev/null 2>&1 || echo "warning: git-lfs not installed - videos and audio will be pointer files"
-git lfs pull 2>/dev/null || true
-
 npm ci
 
 python3 -m venv tools/.venv

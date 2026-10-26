@@ -28,4 +28,7 @@ run("node", ["tools/index.mjs"]);
 
 const out = path.join(dir, "output");
 const list = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? list(path.join(d, e.name)) : [path.join(d, e.name)]));
-for (const f of list(out)) console.log(`${(fs.statSync(f).size / 1e6).toFixed(1).padStart(6)} MB  ${path.relative(root, f)}`);
+for (const f of list(out)) {
+  const mb = fs.statSync(f).size / 1e6;
+  console.log(`${mb.toFixed(1).padStart(6)} MB  ${path.relative(root, f)}${mb > 95 ? "  <- over GitHub's 100 MB limit risk: re-render with a higher CRF" : ""}`);
+}

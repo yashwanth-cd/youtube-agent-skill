@@ -45,10 +45,10 @@ stickman-show/
         ├── script.json        the script, beat by beat, with what is on screen
         ├── PUBLISH.md         title, thumbnail, description, chapters, tags, Shorts - ready to paste
         ├── src/               this video's scenes, thumbnail and generated timing
-        ├── audio/             narration and Shorts hooks (Git LFS)
+        ├── audio/             narration and Shorts hooks (mp3)
         ├── captions/          narration.srt
         ├── reports/           hookscore.py, title.py, deadair.py output
-        └── output/            the finished files (Git LFS)
+        └── output/            the finished files
             ├── 5-ways-to-get-rich.mp4
             ├── thumbnail.png
             └── shorts/short-1-me-vs-larry.mp4 …
@@ -84,14 +84,21 @@ npm run make    -- video-002 --skip-voice             # long video + thumbnail +
 - **Shorts come from the long video.** Each Short is a new spoken hook over a frozen frame, then
   the span, framed vertically with big captions. Define them in `video.json`; `make` renders them.
 
-## Storage: Git LFS
+## Storage
 
-Finished videos and narration are large, so `videos/**/output/**` and `videos/**/audio/**` go
-through Git LFS (see `.gitattributes` in this folder). Clone with LFS installed, or run
-`git lfs pull` afterwards, to get the real files. Each episode is roughly 50 MB for the long video
-plus 20–40 MB of Shorts and 5 MB of narration. Keep an eye on the account's LFS storage and
-bandwidth quota (GitHub → Settings → Billing). When it gets tight, move older `output/` files to
-other storage and keep the source. Everything in `output/` can be re-rendered from the folder.
+Finished videos, thumbnails, Shorts and narration are committed as normal git files. Git LFS
+would be nicer, but GitHub refuses LFS uploads to a public fork, and this repo is a fork. Every
+file has to stay under GitHub's 100 MB limit: `render.mjs` encodes at CRF 20, which puts a
+7-minute video near 50 MB and a Short near 5–10 MB.
+
+Each video adds roughly 80–100 MB to the repo's history, and every clone downloads all of it. That's
+fine for dozens of videos. When it starts to hurt, the options are:
+
+1. **Detach the fork** (GitHub → Settings, or ask GitHub Support to detach it) so it becomes a
+   normal repo, then switch on the LFS lines in `.gitattributes`. Upstream sync keeps working
+   through the `upstream` remote.
+2. **Keep only source in git** and put `output/` files in GitHub Releases or cloud storage.
+   Everything in `output/` can be re-rendered from the video's folder.
 
 ## Licences
 
