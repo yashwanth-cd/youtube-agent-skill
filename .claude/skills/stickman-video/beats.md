@@ -33,7 +33,7 @@ same names. If you add a beat, set, emote or camera mode, update all three.
 
 | field | values | effect |
 | --- | --- | --- |
-| `beat` | see below | what appears; stays until the next line with a beat |
+| `beat` | see below | what appears; stays until the next line with a beat (a `cast` entrance counts) |
 | `pose` | stand, relaxed, cheer, pointR, pointL, pointUpR, shrug, sad, think, hold, holdHigh, present, presentL, hips, shock, facepalm, push, sit, wave | overrides the beat's default pose |
 | `expr` | smile, grin, flat, frown, o, worried, smug, sleep | Stick's face |
 | `emote` | idea, sweat, question, exclaim, money, love, sparkle, angry, zzz, fire, think | reaction icon above the head for that line |
@@ -68,7 +68,7 @@ Scene fields: `id`, `chapter`, `set`, `stickX` (default 330), `lines`.
 | `props` | `items[{name, label?}]` | 2–3 objects side by side |
 | `cross` | `items[]` (icon names or short text) | things that get crossed out |
 | `quote` | `text` | speech bubble from Stick |
-| `cast` | `who` (larry, boss, shady, friend), `label?`, `expr?`, `pose?`, `emote?` | a second character on the right, until `clear` or scene end |
+| `cast` | `who` (larry, boss, shady, friend), `label?`, `expr?`, `pose?`, `emote?`, `stay?` | a second character on the right. Leaves when the next beat arrives; `"stay": true` keeps them on through later beats until `clear` (keep those beats narrow, they share the stage) |
 | `clear` | – | empty the stage (lets the camera go tight on Stick) |
 
 Drawn props (animated, older style): jar, bucket (leaks), car, moneyTree, safe, basket, hammock,

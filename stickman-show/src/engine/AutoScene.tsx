@@ -45,7 +45,7 @@ export type Beat =
   | { type: "props"; items: { name: string; label?: string }[] }
   | { type: "cross"; items: string[] }
   | { type: "quote"; text: string }
-  | { type: "cast"; who: CastName; label?: string; expr?: Expr; pose?: PoseName; emote?: Emote }
+  | { type: "cast"; who: CastName; label?: string; expr?: Expr; pose?: PoseName; emote?: Emote; stay?: boolean }
   | { type: "clear" };
 
 export type CameraMode = "wide" | "stick" | "content" | "close";
@@ -868,7 +868,11 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
 
   const castBeat = beats.filter((b) => b.sl.beat!.type === "cast" && f >= b.line.start).pop();
   const castDef = castBeat ? (castBeat.sl.beat as Extract<Beat, { type: "cast" }>) : null;
-  const castCleared = castBeat && beats.some((b) => b.sl.beat!.type === "clear" && b.line.start > castBeat.line.start && f >= b.line.start);
+  // a cast member leaves when the next beat arrives, unless "stay": true (then until "clear")
+  const castCleared =
+    castBeat &&
+    castDef &&
+    beats.some((b) => b.line.start > castBeat.line.start && f >= b.line.start - 4 && (b.sl.beat!.type === "clear" || (!castDef.stay && b.sl.beat!.type !== "cast")));
   const titleBeat = beats.find((b) => b.sl.beat!.type === "title");
   const onEndCard = endCard > 0 && f >= duration - endCard;
 
@@ -886,7 +890,8 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
       {beats.map(({ sl, line }, i) => {
         const b = sl.beat!;
         if (b.type === "title" || b.type === "cast" || b.type === "clear") return null;
-        const next = beats.slice(i + 1).find((x) => x.sl.beat!.type !== "cast");
+        // a character walking on counts as the next beat too (unless the earlier cast asked to stay)
+        const next = beats.slice(i + 1)[0];
         const end = next ? next.line.start : duration - endCard;
         // hand over between beats in a few frames, so the stage never sits empty
         if (f < line.start - 4 || f > end + 4) return null;
@@ -906,7 +911,7 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
       {castDef && castBeat && !castCleared && !onEndCard && (
         <g opacity={ease(f, castBeat.line.start, 10)}>
           <Stick
-            x={1660}
+            x={1590}
             y={GROUND}
             scale={1.55}
             color={CAST[castDef.who].color}
@@ -917,7 +922,7 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
             emote={castDef.emote}
           />
           {castDef.label && (
-            <g transform={`translate(1660 ${GROUND - 520})`}>
+            <g transform={`translate(1560 ${GROUND - 520})`}>
               <Chip text={castDef.label} font="display" size={40} fill={light(CAST[castDef.who].tag, C.white)} />
             </g>
           )}
