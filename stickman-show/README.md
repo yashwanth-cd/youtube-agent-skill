@@ -1,0 +1,101 @@
+# The Stickman Show
+
+Every video on the channel lives here: the script, the animation code, the voice, the finished MP4,
+the thumbnail and the Shorts. They are made with the eleven skills in this repo (`/yt-script`,
+`/yt-package`, `/yt-seo`, …) and rendered with [Remotion](https://www.remotion.dev).
+
+**All videos:** [VIDEOS.md](VIDEOS.md)
+
+## Why it is all in one folder
+
+This repo is a fork of [Jakeschincariol/youtube-agent-skill](https://github.com/Jakeschincariol/youtube-agent-skill).
+Everything the channel adds sits inside `stickman-show/`, and **no file outside this folder is
+ever edited**. So pulling the owner's updates is always a clean merge:
+
+```bash
+git remote add upstream https://github.com/Jakeschincariol/youtube-agent-skill.git   # once
+git fetch upstream
+git merge upstream/main          # or press "Sync fork" on GitHub
+```
+
+The one thing outside this folder is the channel's own skill, `.claude/skills/stickman-video/`. It
+sits at the repo root because that's where Claude Code discovers project skills. Upstream has no
+such folder, so it can't conflict either. If you want a channel-specific version of one of the
+upstream skills, copy it into `stickman-show/` instead of editing the original. Editing the
+original is the one thing that can make a sync conflict.
+
+## Layout
+
+```
+stickman-show/
+├── VIDEOS.md                  index of every video (npm run index)
+├── CLAUDE.md                  how Claude makes a video here - read by Claude Code automatically
+├── channel/
+│   ├── voice.md               the channel's voice; every skill reads it
+│   └── characters.md          the cast, colours and fonts
+├── src/
+│   ├── engine/                shared by every video: stick-figure rig, props, captions, Shorts layout
+│   ├── videos.ts              the list of videos (new-video appends to it)
+│   └── Root.tsx               registers <id>-full, <id>-thumbnail, <id>-short-N for each video
+├── public/                    shared fonts, sound effects, music bed
+├── tools/                     setup.sh, tts.py (voice), check, make, render, preview, new-video, index, template/
+└── videos/
+    └── video-001-5-ways-to-get-rich/
+        ├── video.json         id, title, status, YouTube link, the Shorts and their timings
+        ├── script.json        the script, beat by beat, with what is on screen
+        ├── PUBLISH.md         title, thumbnail, description, chapters, tags, Shorts - ready to paste
+        ├── src/               this video's scenes, thumbnail and generated timing
+        ├── audio/             narration and Shorts hooks (Git LFS)
+        ├── captions/          narration.srt
+        ├── reports/           hookscore.py, title.py, deadair.py output
+        └── output/            the finished files (Git LFS)
+            ├── 5-ways-to-get-rich.mp4
+            ├── thumbnail.png
+            └── shorts/short-1-me-vs-larry.mp4 …
+```
+
+Folders are numbered `video-001`, `video-002`, … with three digits so they sort correctly past 9
+and 99. Composition ids use the same number: `v001-full`, `v001-short-2`, `v002-thumbnail`.
+
+## Making the next video
+
+Ask Claude: **"make Stickman Show video 2 about compound interest"**. The `stickman-video` skill
+runs the whole pipeline. By hand it's:
+
+```bash
+bash tools/setup.sh                                   # once per machine / cloud session
+npm run new-video -- compound-interest "Working Title"
+#   script.json: lines + a "beat" per line (see .claude/skills/stickman-video/beats.md)
+npm run check   -- video-002                          # validate + runtime estimate, no rendering
+npm run voice   -- videos/video-002-compound-interest # narration, timing, captions
+npm run preview -- video-002                          # one contact-sheet PNG of the whole video
+#   add Shorts to video.json, fill in PUBLISH.md
+npm run make    -- video-002 --skip-voice             # long video + thumbnail + Shorts + VIDEOS.md
+```
+
+### How a video is built
+
+- **Beats, not code.** Each line in `script.json` can carry a `beat` (title card, list, bars, jars,
+  stamp, compare, props, a second character…) and Stick's pose and face. `AutoScene` turns those
+  into animation timed to the voice, so a normal video needs no hand-written scenes. Video 001 is
+  fully hand-animated and serves as the reference for special moments.
+- **Everything is keyed to script lines.** Beats, scenes and Shorts point at line keys
+  (`"way3.me"`), not seconds. Re-voicing or rewording a line re-times everything for free.
+- **Shorts come from the long video.** Each Short is a new spoken hook over a frozen frame, then
+  the span, framed vertically with big captions. Define them in `video.json`; `make` renders them.
+
+## Storage: Git LFS
+
+Finished videos and narration are large, so `videos/**/output/**` and `videos/**/audio/**` go
+through Git LFS (see `.gitattributes` in this folder). Clone with LFS installed, or run
+`git lfs pull` afterwards, to get the real files. Each episode is roughly 50 MB for the long video
+plus 20–40 MB of Shorts and 5 MB of narration. Keep an eye on the account's LFS storage and
+bandwidth quota (GitHub → Settings → Billing). When it gets tight, move older `output/` files to
+other storage and keep the source. Everything in `output/` can be re-rendered from the folder.
+
+## Licences
+
+Fonts: Patrick Hand and Luckiest Guy (SIL Open Font License). The music bed and sound effects are
+synthesised by `tools/sound.py`. The voice is Piper `en_US-norman-medium`, whose training data is
+public domain. Several Piper voices are non-commercial, so see `channel/characters.md` before
+changing it.

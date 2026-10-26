@@ -1,0 +1,23 @@
+{
+  "title": "__TITLE__",
+  "thumbnail": "",
+  "hook_formula": "",
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "The hook",
+      "lines": [
+        { "key": "open", "text": "Replace this with the winning hook from slash Y T script.", "expr": "grin", "beat": { "type": "text", "text": "YOUR HOOK HERE", "sub": "one idea per beat" } },
+        { "key": "promise", "text": "Then say what the video will do, in one sentence.", "beat": { "type": "steps", "items": ["ONE", "TWO", "THREE"] } }
+      ]
+    },
+    {
+      "id": "point1",
+      "chapter": "1. The first point",
+      "lines": [
+        { "key": "title", "text": "Point one. The first point.", "beat": { "type": "title", "n": 1, "title": "THE FIRST POINT", "sub": "a short promise", "color": "green" } },
+        { "key": "explain", "text": "Explain it with something to look at.", "beat": { "type": "jars", "jars": [{ "label": "SAVINGS", "fill": 0.6, "color": "green" }, { "label": "FUN", "fill": 0.3 }], "coins": true } }
+      ]
+    }
+  ]
+}

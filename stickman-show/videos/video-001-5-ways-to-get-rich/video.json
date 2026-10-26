@@ -1,0 +1,72 @@
+{
+  "id": "v001",
+  "number": 1,
+  "slug": "5-ways-to-get-rich",
+  "title": "5 Ways to Get Rich on a Normal Salary",
+  "thumbnailText": "NO LUCK NEEDED",
+  "status": "rendered",
+  "runtime": "6:49",
+  "youtube": {
+    "url": null,
+    "published": null
+  },
+  "voice": {
+    "engine": "piper",
+    "model": "en_US-norman-medium",
+    "lengthScale": 0.95
+  },
+  "shorts": [
+    {
+      "n": 1,
+      "slug": "me-vs-larry",
+      "from": "way3.me",
+      "to": "way3.time",
+      "still": "way3.larry+1",
+      "hook": "You and Larry both save $200 a month. He starts 10 years later. Why does he end up with less than half?",
+      "onScreen": "SAME $200. 10 YEARS APART.",
+      "cropX": 975,
+      "youtube": null
+    },
+    {
+      "n": 2,
+      "slug": "hole-in-the-bucket",
+      "from": "way2.bucket",
+      "to": "way2.nothing",
+      "still": "way2.bucket+3",
+      "hook": "$3,000 on a card at 22% can cost you over $700 in one year. That's why your savings never grow.",
+      "onScreen": "THE HOLE IN YOUR BUCKET",
+      "youtube": null
+    },
+    {
+      "n": 3,
+      "slug": "flip-the-order",
+      "from": "way1.most",
+      "to": "way1.rest",
+      "still": "way1.most+5",
+      "hook": "You save what's left at the end of the month? Stop. That's why there's never anything left.",
+      "onScreen": "FLIP THE ORDER",
+      "cropX": 1000,
+      "youtube": null
+    },
+    {
+      "n": 4,
+      "slug": "no-ceiling",
+      "from": "way4.floor",
+      "to": "way4.half",
+      "still": "way4.floor+4",
+      "hook": "You can only cut so many coffees before you hit the floor. Earning has no ceiling, but almost nobody guards it.",
+      "onScreen": "CUTTING HAS A FLOOR",
+      "youtube": null
+    },
+    {
+      "n": 5,
+      "slug": "the-money-machine",
+      "from": "machine.intro",
+      "to": "machine.boring",
+      "still": "machine.g5+2",
+      "hook": "Stop waiting for a raise to get rich. 5 gears, a normal salary, and almost nobody builds all 5.",
+      "onScreen": "THE MONEY MACHINE",
+      "youtube": null
+    }
+  ]
+}

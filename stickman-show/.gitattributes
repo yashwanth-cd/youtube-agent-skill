@@ -1,0 +1,9 @@
+# Media is stored as normal git files: GitHub refuses Git LFS uploads to public forks, and this
+# repo is a fork. Keep every file under GitHub's 100 MB limit (render.mjs uses CRF 20, which puts a
+# 7-minute video near 50 MB). If the repo is ever detached from the fork network, LFS can be
+# switched on by uncommenting these two lines (and running `git lfs migrate` for old files).
+# videos/**/output/** filter=lfs diff=lfs merge=lfs -text
+# videos/**/audio/** filter=lfs diff=lfs merge=lfs -text
+*.mp4 binary
+*.mp3 binary
+*.png binary

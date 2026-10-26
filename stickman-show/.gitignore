@@ -1,0 +1,12 @@
+node_modules
+dist
+.DS_Store
+.env
+__pycache__/
+
+# local TTS install (tools/setup.sh)
+tools/.venv
+tools/.models
+
+# scratch renders; finished files go in videos/<folder>/output/
+out

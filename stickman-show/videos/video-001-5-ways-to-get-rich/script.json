@@ -1,0 +1,402 @@
+{
+  "title": "5 Ways to Get Rich on a Normal Salary",
+  "thumbnail": "NO LUCK NEEDED",
+  "hook_formula": "The Mistake",
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Why you're broke again",
+      "lines": [
+        {
+          "key": "paycheck",
+          "text": "Your paycheck lands, and three weeks later, you're broke again.",
+          "screen": "Envelope drops into Stick's hands; calendar flips; bills fly in and carry the cash off; a moth flies out of his wallet."
+        },
+        {
+          "key": "where",
+          "text": "Rent took some. Food took some. A dozen little subscriptions took the rest. And you're left wondering where it all went.",
+          "screen": "Bills labelled RENT, FOOD, SUBS each grab a stack of cash and run."
+        },
+        {
+          "key": "salary",
+          "text": "Stop blaming your salary.",
+          "screen": "Red stamp: IT'S NOT YOUR SALARY."
+        },
+        {
+          "key": "five",
+          "text": "It's five moves nobody showed you, and almost none of them cost a cent.",
+          "screen": "Five numbered circles pop up behind Stick; a $0 price tag swings in."
+        }
+      ]
+    },
+    {
+      "id": "plan",
+      "chapter": "The plan",
+      "lines": [
+        {
+          "key": "plan",
+          "text": "Here's the plan. Five moves, one at a time, and each one feeds the next.",
+          "screen": "A road with five signposts; Stick walks onto it."
+        },
+        {
+          "key": "machine",
+          "text": "By the end, you'll have the whole machine.",
+          "screen": "Ghost outline of a five-gear machine at the end of the road."
+        },
+        {
+          "key": "disclaimer",
+          "text": "Quick note. I'm a stick figure, not your financial advisor. This is education, not advice.",
+          "screen": "Small badge: Education, not financial advice."
+        }
+      ]
+    },
+    {
+      "id": "way1",
+      "chapter": "1. Pay yourself first",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Move one. Pay yourself first.",
+          "screen": "Title card: 1 \u2014 PAY YOURSELF FIRST."
+        },
+        {
+          "key": "most",
+          "text": "Here's how most people do it. Paycheck comes in. You pay rent, food, fun, and whatever is left at the end, you save.",
+          "screen": "Coins flow into jars in order: RENT, FOOD, FUN, then SAVINGS last."
+        },
+        {
+          "key": "nothing",
+          "text": "Here's the thing. There is never anything left.",
+          "screen": "Savings jar empty; tumbleweed rolls past."
+        },
+        {
+          "key": "flip",
+          "text": "So flip the order. The day your pay arrives, a fixed slice goes straight to savings, before you touch a cent.",
+          "screen": "Jars swap places; SAVINGS jumps to the front and fills first."
+        },
+        {
+          "key": "rest",
+          "text": "Then you live on the rest.",
+          "screen": "Remaining coins split across the other jars."
+        },
+        {
+          "key": "brain",
+          "text": "This works because of a weird trick of the brain. Money you never see, you don't miss. Put your savings in a separate account, one that doesn't show up every time you open your spending app.",
+          "screen": "Stick puts the savings jar in a safe behind a curtain; thought bubble: out of sight, out of mind."
+        },
+        {
+          "key": "small",
+          "text": "It doesn't have to be big. Start with a slice that doesn't hurt, and nudge it up every time you get a raise.",
+          "screen": "Slider labelled 'your slice' ticks up step by step."
+        },
+        {
+          "key": "auto",
+          "text": "And automate it. Set up an automatic transfer, so willpower never gets a vote.",
+          "screen": "Phone with toggle AUTO-TRANSFER: ON; coins move on their own."
+        },
+        {
+          "key": "boring",
+          "text": "Boring. And that's the point.",
+          "screen": "Stick shrugs, sips tea."
+        }
+      ]
+    },
+    {
+      "id": "way2",
+      "chapter": "2. Kill high-interest debt",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Move two. Kill high-interest debt.",
+          "screen": "Title card: 2 \u2014 KILL HIGH-INTEREST DEBT."
+        },
+        {
+          "key": "bucket",
+          "text": "Saving money while you carry credit card debt is like filling a bucket with a hole in the bottom.",
+          "screen": "Stick pours water into a bucket; it drains out of a hole."
+        },
+        {
+          "key": "example",
+          "text": "Card interest compounds against you. For example, three thousand dollars at twenty-two percent a year costs you over seven hundred dollars in interest in a single year, if you don't pay it down.",
+          "screen": "Label: EXAMPLE \u2014 $3,000 at 22% APR \u2192 over $700 interest in one year."
+        },
+        {
+          "key": "nothing",
+          "text": "That's money you worked for, buying absolutely nothing.",
+          "screen": "Bills fly into a monster labelled INTEREST."
+        },
+        {
+          "key": "list",
+          "text": "So, list your debts. Pay the minimum on all of them, and throw every spare dollar at the one with the highest interest rate.",
+          "screen": "Three cards with rates; the highest one is highlighted and smashed with a hammer."
+        },
+        {
+          "key": "roll",
+          "text": "When it's gone, roll that payment into the next one. It speeds up, like a snowball.",
+          "screen": "The freed payment rolls into the next card, growing like a snowball."
+        },
+        {
+          "key": "choice",
+          "text": "Some people prefer to clear the smallest balance first, for the quick win. That's fine too. The best plan is the one you'll actually stick with.",
+          "screen": "Two paths labelled HIGHEST RATE and SMALLEST BALANCE both reach a flag labelled DEBT FREE."
+        },
+        {
+          "key": "stop",
+          "text": "And while you're digging out, stop adding new debt. You can't empty a bath with the tap still running.",
+          "screen": "Bathtub with the tap running; Stick turns it off."
+        },
+        {
+          "key": "emergency",
+          "text": "And keep a small emergency fund, so one flat tire doesn't put you right back on the card.",
+          "screen": "Car with a flat tyre; Stick pays from an EMERGENCY jar instead of a card."
+        }
+      ]
+    },
+    {
+      "id": "way3",
+      "chapter": "3. Invest early",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Move three. Invest early, and let time do the heavy lifting.",
+          "screen": "Title card: 3 \u2014 INVEST EARLY."
+        },
+        {
+          "key": "compound",
+          "text": "Compounding means your money earns money, and then that money earns money too.",
+          "screen": "A snowball rolls downhill, growing."
+        },
+        {
+          "key": "me",
+          "text": "Watch. This is me. I put two hundred dollars a month into a low-cost index fund, starting at twenty-five.",
+          "screen": "Stick with tag: $200/month from age 25."
+        },
+        {
+          "key": "larry",
+          "text": "This is Larry. Larry does the exact same thing, but he waits until he's thirty-five.",
+          "screen": "Larry, a blue stick figure, appears: $200/month from age 35."
+        },
+        {
+          "key": "assume",
+          "text": "To keep the math simple, let's assume seven percent a year on average. That's an assumption, not a promise. Real markets jump around.",
+          "screen": "Label: ASSUMED 7% a year average (not guaranteed)."
+        },
+        {
+          "key": "larryResult",
+          "text": "At sixty-five, Larry has put in seventy-two thousand dollars, and ends up with about two hundred and forty thousand.",
+          "screen": "Larry's bar grows: put in $72k \u2192 about $244k."
+        },
+        {
+          "key": "meResult",
+          "text": "I put in ninety-six thousand. Only twenty-four thousand more. And I end up with about five hundred and twenty-five thousand.",
+          "screen": "Stick's bar towers: put in $96k \u2192 about $525k."
+        },
+        {
+          "key": "time",
+          "text": "Same habit. Ten extra years. More than double the money. The difference wasn't talent. It was time.",
+          "screen": "Big text: THE DIFFERENCE WAS TIME."
+        },
+        {
+          "key": "index",
+          "text": "And an index fund just means you own a tiny slice of hundreds of companies at once, so you're not betting everything on one.",
+          "screen": "A basket filled with tiny company buildings."
+        },
+        {
+          "key": "match",
+          "text": "And if your job offers a retirement plan with an employer match, take the full match first. It's the closest thing to free money you'll ever be offered.",
+          "screen": "Stick drops in a coin; the boss stick figure drops one in beside it: MATCH."
+        },
+        {
+          "key": "hold",
+          "text": "Keep the fees low, keep adding, and don't panic sell when it drops. It will drop. Stay on the hill.",
+          "screen": "A jagged line chart trending up; Stick calmly holds on through the dips."
+        }
+      ]
+    },
+    {
+      "id": "way4",
+      "chapter": "4. Grow your income",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Move four. Grow your income, then guard it.",
+          "screen": "Title card: 4 \u2014 GROW YOUR INCOME."
+        },
+        {
+          "key": "floor",
+          "text": "Cutting costs has a floor. You can only skip so many coffees. But earning has no ceiling.",
+          "screen": "Left: arrow hits a floor labelled CUTTING. Right: arrow shoots up past the frame labelled EARNING."
+        },
+        {
+          "key": "skill",
+          "text": "The best investment is usually you. A skill that's in demand. Getting really good at something people pay for.",
+          "screen": "Stick reads a book; a level-up bar fills."
+        },
+        {
+          "key": "tenmin",
+          "text": "It doesn't take a degree. Ten minutes a day, every day, adds up to more than sixty hours of practice in a year.",
+          "screen": "A calendar fills with small ticks; counter: 10 min/day \u2248 60+ hours/year."
+        },
+        {
+          "key": "use",
+          "text": "Then use it. Ask for the raise, with proof. Switch jobs if yours won't pay what you're worth. Or start something on the side.",
+          "screen": "Three doors: RAISE, NEW JOB, SIDE PROJECT."
+        },
+        {
+          "key": "trap",
+          "text": "But here's the trap. When income goes up, spending sneaks up right behind it.",
+          "screen": "Income bar rises; a bigger TV and a fancier car appear; savings stays at zero."
+        },
+        {
+          "key": "half",
+          "text": "So when you get a raise, send at least half of it straight to move one and move three. Live a little better, not a lot better.",
+          "screen": "Raise splits: half to SAVE and INVEST, half to LIFE."
+        }
+      ]
+    },
+    {
+      "id": "way5",
+      "chapter": "5. Own things that earn",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Move five. Own things that earn while you sleep.",
+          "screen": "Title card: 5 \u2014 OWN THINGS THAT EARN."
+        },
+        {
+          "key": "two",
+          "text": "There are two kinds of stuff. Things that take money out of your pocket, and things that put money into it.",
+          "screen": "Two columns: TAKES MONEY (car leaking cash) and MAKES MONEY (a tree growing coins)."
+        },
+        {
+          "key": "examples",
+          "text": "A new car loses value as soon as you drive it home. Shares in companies, a small business, things you create that keep selling. Those can pay you again and again.",
+          "screen": "Icons drop into the MAKES MONEY column: shares, a shop, a book."
+        },
+        {
+          "key": "hours",
+          "text": "Your job trades hours for money, and you only have so many hours.",
+          "screen": "A clock; hours tick into coins one for one, then run out."
+        },
+        {
+          "key": "break",
+          "text": "Owning things breaks that link. That's how wealth stops depending on how hard you work today.",
+          "screen": "Stick naps in a hammock while the money tree drops coins."
+        },
+        {
+          "key": "small",
+          "text": "Start small. Ownership can be one share, or one thing you built on a weekend.",
+          "screen": "One share certificate and a tiny lemonade stand."
+        },
+        {
+          "key": "skills",
+          "text": "And remember, the skills you built in move four are an asset too. Nobody can repossess what you know.",
+          "screen": "Stick taps his head; a gold star badge floats out."
+        }
+      ]
+    },
+    {
+      "id": "machine",
+      "chapter": "The whole machine",
+      "lines": [
+        {
+          "key": "intro",
+          "text": "So that's the machine.",
+          "screen": "Five gears assemble into one machine."
+        },
+        {
+          "key": "g1",
+          "text": "Pay yourself first, so money exists.",
+          "screen": "Gear 1 lights up."
+        },
+        {
+          "key": "g2",
+          "text": "Kill the debt, so nothing leaks.",
+          "screen": "Gear 2 lights up."
+        },
+        {
+          "key": "g3",
+          "text": "Invest it, so it grows.",
+          "screen": "Gear 3 lights up."
+        },
+        {
+          "key": "g4",
+          "text": "Grow your income, so there's more to feed in.",
+          "screen": "Gear 4 lights up."
+        },
+        {
+          "key": "g5",
+          "text": "And own things that earn, so it keeps going without you.",
+          "screen": "Gear 5 lights up; the machine spins and drops coins."
+        },
+        {
+          "key": "missing",
+          "text": "Notice what's missing. No lottery. No hot tip. No coin your cousin swears is going to the moon.",
+          "screen": "Lottery ticket, hot-tip phone and rocket coin get crossed out."
+        },
+        {
+          "key": "run",
+          "text": "If anything promises you fast and guaranteed, run.",
+          "screen": "A shady stick figure in sunglasses holds a sign FAST + GUARANTEED; Stick runs."
+        },
+        {
+          "key": "boring",
+          "text": "Getting rich is mostly boring stuff, done for a long time. And the earlier you start, the less boring stuff you need.",
+          "screen": "Stick back at the machine, calm."
+        }
+      ]
+    },
+    {
+      "id": "month",
+      "chapter": "What a real month looks like",
+      "lines": [
+        {
+          "key": "intro",
+          "text": "So what does this look like in a real month? Let's walk through one payday.",
+          "screen": "Calendar page: PAYDAY. Stick holds a paycheck."
+        },
+        {
+          "key": "save",
+          "text": "Day one. Pay lands. The automatic transfer moves your slice to savings, before you even wake up.",
+          "screen": "Coins slide to SAVINGS while Stick sleeps."
+        },
+        {
+          "key": "debt",
+          "text": "Minimum payments go out on every debt, and the extra goes to the most expensive one.",
+          "screen": "Small coins to each card, a big coin to the highest-rate card."
+        },
+        {
+          "key": "invest",
+          "text": "Another slice goes into your index fund. Same amount, every month, no matter what the news says.",
+          "screen": "Coin drops into the basket of companies; a TV yelling headlines is ignored."
+        },
+        {
+          "key": "live",
+          "text": "And what's left is yours. Rent, food, fun. No guilt, because the important stuff already happened.",
+          "screen": "Stick enjoys a pizza on the couch."
+        },
+        {
+          "key": "repeat",
+          "text": "Then you do it again next month. And the month after that. That's the whole trick.",
+          "screen": "Calendar pages flip faster and faster; the savings and investment bars grow."
+        }
+      ]
+    },
+    {
+      "id": "close",
+      "chapter": "Your one job tonight",
+      "lines": [
+        {
+          "key": "job",
+          "text": "So here's your one job. Tonight, set up one automatic transfer. Any amount. That's move one, and the machine starts turning.",
+          "screen": "Phone: AUTO-TRANSFER ON. The machine's first gear starts turning."
+        },
+        {
+          "key": "bye",
+          "text": "I'll see you in the next one.",
+          "screen": "Stick waves. End card."
+        }
+      ]
+    }
+  ]
+}

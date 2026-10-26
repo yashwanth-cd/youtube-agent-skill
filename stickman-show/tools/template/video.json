@@ -1,0 +1,12 @@
+{
+  "id": "__ID__",
+  "number": 0,
+  "slug": "__SLUG__",
+  "title": "__TITLE__",
+  "thumbnailText": "",
+  "status": "scripting",
+  "runtime": null,
+  "youtube": { "url": null, "published": null },
+  "voice": { "engine": "piper", "model": "en_US-norman-medium", "lengthScale": 0.95 },
+  "shorts": []
+}

@@ -1,0 +1,77 @@
+
+  "5 Ways to Get Rich Slowly, Without Luck"
+  39 chars   score 100/100
+    ok              39 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "5 Ways to Get Rich on a Normal Salary"
+  37 chars   score 100/100
+    ok              37 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "Get Rich in 5 Steps — No Luck Required"
+  38 chars   score 100/100
+    ok              38 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "5 Ways to Get Rich Before You Turn 30"
+  37 chars   score 100/100
+    ok              37 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5, 30)
+
+  "Stop Being Broke: 5 Ways to Get Rich"
+  36 chars   score 100/100
+    ok              36 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "5 Ways to Get Rich (That Nobody Showed You)"
+  43 chars   score 94/100
+    x  mobile       a mobile feed shows about "5 Ways to Get Rich (That Nobody Showed..." - check the subject survives
+    ok              43 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "How to Get Rich: 5 Boring Moves That Work"
+  41 chars   score 94/100
+    x  mobile       a mobile feed shows about "How to Get Rich: 5 Boring Moves That..." - check the subject survives
+    ok              41 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "Why You're Broke: 5 Ways to Get Rich Instead"
+  44 chars   score 94/100
+    x  mobile       a mobile feed shows about "Why You're Broke: 5 Ways to Get Rich..." - check the subject survives
+    ok              44 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "5 Money Moves That Make You Rich (Animated)"
+  43 chars   score 94/100
+    x  mobile       a mobile feed shows about "5 Money Moves That Make You Rich..." - check the subject survives
+    ok              43 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "The 5 Ways Normal People Actually Get Rich"
+  42 chars   score 94/100
+    x  mobile       a mobile feed shows about "The 5 Ways Normal People Actually Get..." - check the subject survives
+    ok              42 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+
+  "5 Ways to Get Rich on a Normal Salary"
+  37 chars   score 100/100
+    ok              37 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+    ok              thumbnail and title carry different words
+
+
+  "5 Ways to Get Rich Slowly, Without Luck"
+  39 chars   score 94/100
+    x  duplicate    thumbnail repeats the title on rich - the thumbnail should say what the title does not
+    ok              39 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+
+  "Stop Being Broke: 5 Ways to Get Rich"
+  36 chars   score 100/100
+    ok              36 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+    ok              thumbnail and title carry different words
+

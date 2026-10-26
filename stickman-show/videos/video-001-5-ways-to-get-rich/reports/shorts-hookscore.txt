@@ -1,0 +1,102 @@
+
+  You save what's left at the end of the month? Stop. That's why there's never anything left.
+  ------------------------------------------------------------------------
+    SPECIFICITY   46  #########
+    ADDRESS       76  ###############
+    STAKES        74  ##############
+    CURIOSITY     58  ###########
+    BREVITY      100  ####################
+    VERDICT       61  WORKABLE
+    formula      The Warning  (1 pattern matched)
+    weakest      SPECIFICITY - swap one adjective for a number, a name or a date
+
+  You can only cut so many coffees before you hit the floor. Earning has no ceiling, but almost nobody guards it.
+  ------------------------------------------------------------------------
+    SPECIFICITY   35  #######
+    ADDRESS       96  ###################
+    STAKES        48  #########
+    CURIOSITY     92  ##################
+    BREVITY      100  ####################
+    VERDICT       59  WORKABLE
+    formula      The Warning  (1 pattern matched)
+    weakest      SPECIFICITY - swap one adjective for a number, a name or a date
+
+  Same $200 a month, but Larry waited 10 years. Why did he end up with less than half of what I have?
+  ------------------------------------------------------------------------
+    SPECIFICITY   96  ###################
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     93  ##################
+    BREVITY      100  ####################
+    VERDICT       53  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Your card debt is costing you more than you think. Saving while you carry it means you lose money every month.
+  ------------------------------------------------------------------------
+    SPECIFICITY   40  ########
+    ADDRESS      100  ####################
+    STAKES        48  #########
+    CURIOSITY     24  ####
+    BREVITY      100  ####################
+    VERDICT       47  WEAK
+    formula      Unclassified  (no formula matched - that is usually a summary, not a hook)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  Stop waiting for a big salary. You can build every gear of this 5-part money machine on a normal one.
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       46  #########
+    STAKES        62  ############
+    CURIOSITY     24  ####
+    BREVITY      100  ####################
+    VERDICT       45  WEAK
+    formula      The Mistake  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  winner: You save what's left at the end of the month? Stop. That's why there's never anything left.  (61, WORKABLE)
+
+
+  You and Larry both save $200 a month. He starts 10 years later. Why does he end up with less than half?
+  ------------------------------------------------------------------------
+    SPECIFICITY   96  ###################
+    ADDRESS       76  ###############
+    STAKES        36  #######
+    CURIOSITY     59  ###########
+    BREVITY      100  ####################
+    VERDICT       58  WORKABLE
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Your card debt at 22% can cost you over $700 a year. That's why saving first never works.
+  ------------------------------------------------------------------------
+    SPECIFICITY   84  ################
+    ADDRESS       96  ###################
+    STAKES        88  #################
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       65  WORKABLE
+    formula      The Statistic  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  Stop waiting for a raise to get rich. 5 gears, a normal salary, and almost nobody builds all 5.
+  ------------------------------------------------------------------------
+    SPECIFICITY   78  ###############
+    ADDRESS       26  #####
+    STAKES        62  ############
+    CURIOSITY     58  ###########
+    BREVITY      100  ####################
+    VERDICT       49  WEAK
+    formula      The Mistake  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  $3,000 on a card at 22% can cost you over $700 in one year. That's why your savings never grow.
+  ------------------------------------------------------------------------
+    SPECIFICITY  100  ####################
+    ADDRESS       66  #############
+    STAKES        88  #################
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       64  WORKABLE
+    formula      The Impossible Claim  (2 patterns matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself

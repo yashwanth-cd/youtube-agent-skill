@@ -1,0 +1,12 @@
+{
+ "fps": 30,
+ "scenes": [
+  { "id": "hook", "chapter": "The hook", "durationInFrames": 200, "lines": [
+    { "key": "open", "text": "Replace this with the winning hook from slash Y T script.", "start": 18, "end": 90 },
+    { "key": "promise", "text": "Then say what the video will do, in one sentence.", "start": 108, "end": 170 } ] },
+  { "id": "point1", "chapter": "1. The first point", "durationInFrames": 200, "lines": [
+    { "key": "title", "text": "Point one. The first point.", "start": 18, "end": 70 },
+    { "key": "explain", "text": "Explain it with something to look at.", "start": 130, "end": 180 } ] }
+ ],
+ "shorts": {}
+}

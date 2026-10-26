@@ -1,0 +1,51 @@
+{
+  "name": "stickman-show",
+  "version": "1.0.0",
+  "description": "The Stickman Show: every video, its thumbnail and its Shorts, built with the youtube-agent-skill skills and Remotion.",
+  "repository": {},
+  "license": "UNLICENSED",
+  "engines": {
+    "node": "^20.19.0 || ^22.13.0 || >=24"
+  },
+  "private": true,
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "@remotion/media": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "@remotion/transitions": "4.0.539",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@remotion/eslint-config-flat": "4.0.539",
+    "@types/react": "19.2.7",
+    "@types/web": "0.0.166",
+    "eslint": "10.12.0",
+    "prettier": "3.8.1",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "studio": "remotion studio",
+    "new-video": "node tools/new-video.mjs",
+    "voice": "python3 tools/tts.py",
+    "render": "node tools/render.mjs",
+    "stills": "node tools/stills.mjs",
+    "index": "node tools/index.mjs",
+    "lint": "eslint src videos tools/template && tsc",
+    "build": "remotion bundle",
+    "upgrade": "remotion upgrade",
+    "preview": "node tools/preview.mjs",
+    "make": "node tools/make.mjs",
+    "check": "node tools/check.mjs"
+  },
+  "allowScripts": {
+    "esbuild": false
+  },
+  "imports": {
+    "#engine": "./src/engine/index.ts"
+  }
+}
