@@ -1,7 +1,9 @@
 # Hand-animated scenes — only when beats can't do it
 
-Full examples: `stickman-show/videos/video-001-5-ways-to-get-rich/src/scenes/*.tsx` (all ten
-scenes of the first video are hand-animated). Copy the closest one rather than starting blank.
+Video 001 is fully automatic (beats), which is the normal case. The engine source for each beat
+is in `stickman-show/src/engine/AutoScene.tsx`: copy the closest beat's drawing code into your
+scene rather than starting blank. (The original hand-animated v1 scenes are in git history,
+commit e5c7b7b, `videos/video-001-5-ways-to-get-rich/src/scenes/`.)
 
 ## Wiring
 
@@ -23,7 +25,7 @@ export const Way3: React.FC = () => {
   const pose = poseAt(f, [[0, "stand"], [L.me.start, "pointR"]]);
   const sfx: Cue[] = [[L.me.start + 10, "pop", 0.4]];
   return (
-    <Scene {...sceneProps("way3")} sfx={sfx}>
+    <Scene {...sceneProps("way3")} sfx={sfx} set="board" camera={[[0, { zoom: 1 }], [L.me.start, { zoom: 1.3, x: 700, y: 520 }]]}>
       <Pop at={L.me.start + 10} x={1200} y={300}>
         <Tag x={0} y={0} text="ME" font="display" size={48} fill={C.greenLight} />
       </Pop>
@@ -34,6 +36,16 @@ export const Way3: React.FC = () => {
 ```
 
 ## Engine cheat sheet (`#engine`)
+
+- **Scene**: `<Scene lines voice duration sfx set camera shake overlay>`. `set` (room, kitchen,
+  office, street, park, bank, board, stage) turns on the v2 look: illustrated background, parallax
+  camera, swipe transitions, karaoke captions. `camera`: `[[frame, {zoom, x, y}, dur?], …]` plus an
+  automatic slow push-in. `shake`: frames at which the screen shakes. `overlay`: drawn above the
+  camera (title cards).
+- **Icons**: `<Icon name x y size rotate float />` (Fluent Emoji; names from `npm run icons -- search`),
+  `<PopIcon at …/>`, `<Burst at x y kind="coins"|"confetti"|"sparkle" />`.
+- **Stick extras**: `emote` (idea, sweat, question, exclaim, money, love, sparkle, angry, zzz, fire,
+  think), `holding` (icon name), `color={C.white}` on the night stage.
 
 Canvas is one 1920×1080 SVG. `GROUND` = 820. Captions occupy y > 960.
 

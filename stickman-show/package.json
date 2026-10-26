@@ -21,6 +21,8 @@
     "remotion": "4.0.539"
   },
   "devDependencies": {
+    "@iconify-json/fluent-emoji-flat": "^1.2.6",
+    "@iconify/utils": "^3.1.7",
     "@remotion/eslint-config-flat": "4.0.539",
     "@types/react": "19.2.7",
     "@types/web": "0.0.166",
@@ -40,7 +42,8 @@
     "upgrade": "remotion upgrade",
     "preview": "node tools/preview.mjs",
     "make": "node tools/make.mjs",
-    "check": "node tools/check.mjs"
+    "check": "node tools/check.mjs",
+    "icons": "node tools/icons.mjs"
   },
   "allowScripts": {
     "esbuild": false

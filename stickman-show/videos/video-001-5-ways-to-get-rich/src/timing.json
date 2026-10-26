@@ -4,472 +4,387 @@
   {
    "id": "hook",
    "chapter": "Why you're broke again",
-   "durationInFrames": 620,
+   "durationInFrames": 744,
    "lines": [
     {
      "key": "paycheck",
      "text": "Your paycheck lands, and three weeks later, you're broke again.",
      "start": 18,
-     "end": 124
-    },
-    {
-     "key": "where",
-     "text": "Rent took some. Food took some. A dozen little subscriptions took the rest. And you're left wondering where it all went.",
-     "start": 142,
-     "end": 369
+     "end": 123
     },
     {
      "key": "salary",
      "text": "Stop blaming your salary.",
-     "start": 387,
-     "end": 444
+     "start": 141,
+     "end": 189
     },
     {
      "key": "five",
      "text": "It's five moves nobody showed you, and almost none of them cost a cent.",
-     "start": 462,
-     "end": 583
-    }
-   ]
-  },
-  {
-   "id": "plan",
-   "chapter": "The plan",
-   "durationInFrames": 485,
-   "lines": [
-    {
-     "key": "plan",
-     "text": "Here's the plan. Five moves, one at a time, and each one feeds the next.",
-     "start": 18,
-     "end": 158
+     "start": 207,
+     "end": 338
     },
     {
-     "key": "machine",
-     "text": "By the end, you'll have the whole machine.",
-     "start": 176,
-     "end": 235
+     "key": "turn",
+     "text": "By the end of this video, you'll have a simple machine that builds wealth on autopilot.",
+     "start": 356,
+     "end": 510
     },
     {
      "key": "disclaimer",
-     "text": "Quick note. I'm a stick figure, not your financial advisor. This is education, not advice.",
-     "start": 253,
-     "end": 448
+     "text": "Quick note. I'm a stick figure, not a financial advisor. This is education, not advice.",
+     "start": 528,
+     "end": 708
     }
    ]
   },
   {
    "id": "way1",
    "chapter": "1. Pay yourself first",
-   "durationInFrames": 1705,
+   "durationInFrames": 1553,
    "lines": [
     {
      "key": "title",
      "text": "Move one. Pay yourself first.",
      "start": 18,
-     "end": 97
+     "end": 73
     },
     {
      "key": "most",
-     "text": "Here's how most people do it. Paycheck comes in. You pay rent, food, fun, and whatever is left at the end, you save.",
-     "start": 157,
-     "end": 403
+     "text": "Most people budget like this. Pay the rent, buy the food, have some fun, and save whatever is left.",
+     "start": 133,
+     "end": 323
     },
     {
      "key": "nothing",
-     "text": "Here's the thing. There is never anything left.",
-     "start": 421,
-     "end": 498
+     "text": "The problem? There's almost never anything left.",
+     "start": 341,
+     "end": 431
     },
     {
      "key": "flip",
-     "text": "So flip the order. The day your pay arrives, a fixed slice goes straight to savings, before you touch a cent.",
-     "start": 516,
-     "end": 722
+     "text": "So flip the order. The day your pay arrives, a fixed slice goes to savings first, automatically.",
+     "start": 449,
+     "end": 641
     },
     {
-     "key": "rest",
-     "text": "Then you live on the rest.",
-     "start": 740,
-     "end": 777
-    },
-    {
-     "key": "brain",
-     "text": "This works because of a weird trick of the brain. Money you never see, you don't miss. Put your savings in a separate account, one that doesn't show up every time you open your spending app.",
-     "start": 795,
-     "end": 1127
+     "key": "rule",
+     "text": "A popular starting point is the fifty thirty twenty rule. Fifty percent for needs, thirty for wants, and twenty for savings and paying off debt.",
+     "start": 659,
+     "end": 945
     },
     {
      "key": "small",
-     "text": "It doesn't have to be big. Start with a slice that doesn't hurt, and nudge it up every time you get a raise.",
-     "start": 1145,
-     "end": 1307
+     "text": "If twenty percent feels impossible, start with five. The habit matters more than the number. Then raise it every time your income goes up.",
+     "start": 963,
+     "end": 1234
+    },
+    {
+     "key": "brain",
+     "text": "Keep that money in a separate account you don't see every day. Out of sight, out of mind.",
+     "start": 1252,
+     "end": 1405
     },
     {
      "key": "auto",
-     "text": "And automate it. Set up an automatic transfer, so willpower never gets a vote.",
-     "start": 1325,
-     "end": 1470
-    },
-    {
-     "key": "boring",
-     "text": "Boring. And that's the point.",
-     "start": 1488,
-     "end": 1669
+     "text": "Set it up once, and willpower never gets a vote.",
+     "start": 1423,
+     "end": 1516
     }
    ]
   },
   {
    "id": "way2",
    "chapter": "2. Kill high-interest debt",
-   "durationInFrames": 1748,
+   "durationInFrames": 2013,
    "lines": [
     {
      "key": "title",
-     "text": "Move two. Kill high-interest debt.",
+     "text": "Move two. Kill high interest debt.",
      "start": 18,
-     "end": 91
+     "end": 79
     },
     {
      "key": "bucket",
-     "text": "Saving money while you carry credit card debt is like filling a bucket with a hole in the bottom.",
-     "start": 151,
-     "end": 295
+     "text": "Saving while you carry credit card debt is like filling a bucket with a hole in the bottom.",
+     "start": 139,
+     "end": 296
+    },
+    {
+     "key": "rates",
+     "text": "Credit cards often charge twenty percent a year or more. A savings account pays a small fraction of that.",
+     "start": 314,
+     "end": 518
     },
     {
      "key": "example",
-     "text": "Card interest compounds against you. For example, three thousand dollars at twenty-two percent a year costs you over seven hundred dollars in interest in a single year, if you don't pay it down.",
-     "start": 313,
-     "end": 614
+     "text": "For example, three thousand dollars at twenty two percent costs you over seven hundred dollars in interest in a single year.",
+     "start": 536,
+     "end": 776
     },
     {
      "key": "nothing",
      "text": "That's money you worked for, buying absolutely nothing.",
-     "start": 632,
-     "end": 719
+     "start": 794,
+     "end": 890
     },
     {
-     "key": "list",
-     "text": "So, list your debts. Pay the minimum on all of them, and throw every spare dollar at the one with the highest interest rate.",
-     "start": 737,
-     "end": 949
+     "key": "avalanche",
+     "text": "The fastest way out is the avalanche method. Pay the minimum on everything, then throw every extra dollar at the highest interest rate.",
+     "start": 908,
+     "end": 1164
     },
     {
      "key": "roll",
-     "text": "When it's gone, roll that payment into the next one. It speeds up, like a snowball.",
-     "start": 967,
-     "end": 1123
+     "text": "When that one's gone, roll its payment into the next. Each debt dies faster than the last.",
+     "start": 1182,
+     "end": 1353
     },
     {
      "key": "choice",
-     "text": "Some people prefer to clear the smallest balance first, for the quick win. That's fine too. The best plan is the one you'll actually stick with.",
-     "start": 1141,
-     "end": 1371
-    },
-    {
-     "key": "stop",
-     "text": "And while you're digging out, stop adding new debt. You can't empty a bath with the tap still running.",
-     "start": 1389,
-     "end": 1558
+     "text": "Prefer quick wins? The snowball method clears the smallest balance first. It can cost a little more, but the best plan is the one you stick with.",
+     "start": 1371,
+     "end": 1643
     },
     {
      "key": "emergency",
-     "text": "And keep a small emergency fund, so one flat tire doesn't put you right back on the card.",
-     "start": 1576,
-     "end": 1711
+     "text": "And build an emergency fund, so one flat tire doesn't put you right back on the card. Many experts suggest working up to three to six months of expenses.",
+     "start": 1661,
+     "end": 1976
     }
    ]
   },
   {
    "id": "way3",
    "chapter": "3. Invest early",
-   "durationInFrames": 2317,
+   "durationInFrames": 2616,
    "lines": [
     {
      "key": "title",
      "text": "Move three. Invest early, and let time do the heavy lifting.",
      "start": 18,
-     "end": 155
+     "end": 133
     },
     {
      "key": "compound",
-     "text": "Compounding means your money earns money, and then that money earns money too.",
-     "start": 215,
-     "end": 319
+     "text": "Compound growth means your money earns money, and then that money earns money too.",
+     "start": 193,
+     "end": 345
+    },
+    {
+     "key": "rule72",
+     "text": "Here's a handy shortcut called the rule of seventy two. Divide seventy two by your yearly return, and that's roughly how many years your money takes to double.",
+     "start": 363,
+     "end": 659
     },
     {
      "key": "me",
-     "text": "Watch. This is me. I put two hundred dollars a month into a low-cost index fund, starting at twenty-five.",
-     "start": 337,
-     "end": 536
-    },
-    {
-     "key": "larry",
-     "text": "This is Larry. Larry does the exact same thing, but he waits until he's thirty-five.",
-     "start": 554,
-     "end": 698
+     "text": "Watch. I invest two hundred dollars a month, starting at twenty five. My friend Larry invests the exact same amount, but waits until he's thirty five.",
+     "start": 677,
+     "end": 979
     },
     {
      "key": "assume",
      "text": "To keep the math simple, let's assume seven percent a year on average. That's an assumption, not a promise. Real markets jump around.",
-     "start": 716,
-     "end": 967
+     "start": 997,
+     "end": 1257
     },
     {
-     "key": "larryResult",
-     "text": "At sixty-five, Larry has put in seventy-two thousand dollars, and ends up with about two hundred and forty thousand.",
-     "start": 985,
-     "end": 1166
-    },
-    {
-     "key": "meResult",
-     "text": "I put in ninety-six thousand. Only twenty-four thousand more. And I end up with about five hundred and twenty-five thousand.",
-     "start": 1184,
-     "end": 1398
+     "key": "chart",
+     "text": "Here's how both pots grow. By sixty five, Larry has about two hundred and forty thousand dollars. I have about five hundred and twenty five thousand.",
+     "start": 1275,
+     "end": 1576
     },
     {
      "key": "time",
-     "text": "Same habit. Ten extra years. More than double the money. The difference wasn't talent. It was time.",
-     "start": 1416,
-     "end": 1647
+     "text": "Same habit. Only ten extra years. More than double the money. The difference wasn't talent. It was time.",
+     "start": 1594,
+     "end": 1793
     },
     {
      "key": "index",
-     "text": "And an index fund just means you own a tiny slice of hundreds of companies at once, so you're not betting everything on one.",
-     "start": 1665,
-     "end": 1834
+     "text": "So where does that money go? Many people use low cost index funds. One fund holds hundreds of companies, so you're never betting everything on one.",
+     "start": 1811,
+     "end": 2099
     },
     {
      "key": "match",
-     "text": "And if your job offers a retirement plan with an employer match, take the full match first. It's the closest thing to free money you'll ever be offered.",
-     "start": 1852,
-     "end": 2081
+     "text": "And if your job offers a retirement match, take the full match first. It's the closest thing to free money you'll ever see.",
+     "start": 2117,
+     "end": 2348
     },
     {
      "key": "hold",
-     "text": "Keep the fees low, keep adding, and don't panic sell when it drops. It will drop. Stay on the hill.",
-     "start": 2099,
-     "end": 2281
+     "text": "Keep fees low, keep adding every month, and don't panic sell when the market drops. It will drop. Stay on the hill.",
+     "start": 2366,
+     "end": 2579
     }
    ]
   },
   {
    "id": "way4",
    "chapter": "4. Grow your income",
-   "durationInFrames": 1404,
+   "durationInFrames": 1439,
    "lines": [
     {
      "key": "title",
      "text": "Move four. Grow your income, then guard it.",
      "start": 18,
-     "end": 115
+     "end": 91
     },
     {
      "key": "floor",
      "text": "Cutting costs has a floor. You can only skip so many coffees. But earning has no ceiling.",
-     "start": 175,
-     "end": 331
+     "start": 151,
+     "end": 324
     },
     {
      "key": "skill",
-     "text": "The best investment is usually you. A skill that's in demand. Getting really good at something people pay for.",
-     "start": 349,
-     "end": 532
+     "text": "The best investment is usually you. A skill people will pay for compounds just like money does.",
+     "start": 342,
+     "end": 535
     },
     {
      "key": "tenmin",
-     "text": "It doesn't take a degree. Ten minutes a day, every day, adds up to more than sixty hours of practice in a year.",
-     "start": 550,
-     "end": 747
+     "text": "Even ten minutes of practice a day adds up to more than sixty hours a year.",
+     "start": 553,
+     "end": 703
     },
     {
      "key": "use",
-     "text": "Then use it. Ask for the raise, with proof. Switch jobs if yours won't pay what you're worth. Or start something on the side.",
-     "start": 765,
-     "end": 999
+     "text": "Then cash it in. Ask for a raise and bring proof of your results. Switch jobs if yours won't pay what you're worth. Or start something on the side.",
+     "start": 721,
+     "end": 1005
     },
     {
      "key": "trap",
-     "text": "But here's the trap. When income goes up, spending sneaks up right behind it.",
-     "start": 1017,
-     "end": 1159
+     "text": "But watch out for lifestyle creep. When income goes up, spending sneaks up right behind it.",
+     "start": 1023,
+     "end": 1200
     },
     {
      "key": "half",
-     "text": "So when you get a raise, send at least half of it straight to move one and move three. Live a little better, not a lot better.",
-     "start": 1177,
-     "end": 1367
+     "text": "A simple rule. When you get a raise, save at least half of it. Live a little better, not a lot better.",
+     "start": 1218,
+     "end": 1402
     }
    ]
   },
   {
    "id": "way5",
    "chapter": "5. Own things that earn",
-   "durationInFrames": 1284,
+   "durationInFrames": 1115,
    "lines": [
     {
      "key": "title",
      "text": "Move five. Own things that earn while you sleep.",
      "start": 18,
-     "end": 121
+     "end": 103
     },
     {
      "key": "two",
-     "text": "There are two kinds of stuff. Things that take money out of your pocket, and things that put money into it.",
-     "start": 181,
-     "end": 328
+     "text": "There are two kinds of stuff. Things that take money out of your pocket, and things that put money in.",
+     "start": 163,
+     "end": 329
     },
     {
-     "key": "examples",
-     "text": "A new car loses value as soon as you drive it home. Shares in companies, a small business, things you create that keep selling. Those can pay you again and again.",
-     "start": 346,
-     "end": 628
+     "key": "assets",
+     "text": "Shares in companies, a small business, a rental, or things you create that keep selling. Those can pay you again and again.",
+     "start": 347,
+     "end": 587
     },
     {
      "key": "hours",
-     "text": "Your job trades hours for money, and you only have so many hours.",
-     "start": 646,
-     "end": 756
+     "text": "Your job trades hours for money, and there are only so many hours in a day.",
+     "start": 605,
+     "end": 746
     },
     {
      "key": "break",
-     "text": "Owning things breaks that link. That's how wealth stops depending on how hard you work today.",
-     "start": 774,
-     "end": 916
+     "text": "Owning things breaks that link. That's how your money starts working while you sleep.",
+     "start": 764,
+     "end": 903
     },
     {
      "key": "small",
-     "text": "Start small. Ownership can be one share, or one thing you built on a weekend.",
-     "start": 934,
-     "end": 1080
-    },
-    {
-     "key": "skills",
-     "text": "And remember, the skills you built in move four are an asset too. Nobody can repossess what you know.",
-     "start": 1098,
-     "end": 1248
+     "text": "Start small. One share of an index fund, or one thing you build on a weekend.",
+     "start": 921,
+     "end": 1078
     }
    ]
   },
   {
    "id": "machine",
    "chapter": "The whole machine",
-   "durationInFrames": 1077,
+   "durationInFrames": 1106,
    "lines": [
     {
      "key": "intro",
-     "text": "So that's the machine.",
+     "text": "So here's the machine. Pay yourself first, so money exists. Kill the debt, so nothing leaks. Invest it, so it grows. Grow your income, so there's more to feed in. And own things that earn, so it keeps going without you.",
      "start": 18,
-     "end": 46
-    },
-    {
-     "key": "g1",
-     "text": "Pay yourself first, so money exists.",
-     "start": 64,
-     "end": 129
-    },
-    {
-     "key": "g2",
-     "text": "Kill the debt, so nothing leaks.",
-     "start": 147,
-     "end": 225
-    },
-    {
-     "key": "g3",
-     "text": "Invest it, so it grows.",
-     "start": 243,
-     "end": 294
-    },
-    {
-     "key": "g4",
-     "text": "Grow your income, so there's more to feed in.",
-     "start": 312,
-     "end": 382
-    },
-    {
-     "key": "g5",
-     "text": "And own things that earn, so it keeps going without you.",
-     "start": 400,
-     "end": 480
+     "end": 445
     },
     {
      "key": "missing",
-     "text": "Notice what's missing. No lottery. No hot tip. No coin your cousin swears is going to the moon.",
-     "start": 498,
-     "end": 717
+     "text": "Notice what's missing. No lottery tickets. No hot tips. No coin your cousin swears is going to the moon.",
+     "start": 463,
+     "end": 684
     },
     {
      "key": "run",
-     "text": "If anything promises you fast and guaranteed, run.",
-     "start": 735,
-     "end": 824
+     "text": "If anyone promises you fast and guaranteed, run.",
+     "start": 702,
+     "end": 796
     },
     {
      "key": "boring",
-     "text": "Getting rich is mostly boring stuff, done for a long time. And the earlier you start, the less boring stuff you need.",
-     "start": 842,
-     "end": 1040
+     "text": "Getting rich is mostly boring stuff, done consistently, for a long time. And the earlier you start, the less boring stuff you need.",
+     "start": 814,
+     "end": 1070
     }
    ]
   },
   {
    "id": "month",
    "chapter": "What a real month looks like",
-   "durationInFrames": 1145,
+   "durationInFrames": 775,
    "lines": [
     {
      "key": "intro",
      "text": "So what does this look like in a real month? Let's walk through one payday.",
      "start": 18,
-     "end": 135
+     "end": 149
     },
     {
-     "key": "save",
-     "text": "Day one. Pay lands. The automatic transfer moves your slice to savings, before you even wake up.",
-     "start": 153,
-     "end": 389
-    },
-    {
-     "key": "debt",
-     "text": "Minimum payments go out on every debt, and the extra goes to the most expensive one.",
-     "start": 407,
-     "end": 530
-    },
-    {
-     "key": "invest",
-     "text": "Another slice goes into your index fund. Same amount, every month, no matter what the news says.",
-     "start": 548,
-     "end": 730
-    },
-    {
-     "key": "live",
-     "text": "And what's left is yours. Rent, food, fun. No guilt, because the important stuff already happened.",
-     "start": 748,
-     "end": 963
+     "key": "walk",
+     "text": "On day one, the automatic transfer moves your slice to savings. The minimums go out, with extra on your most expensive debt. Another slice goes into your index fund. And what's left is yours, guilt free.",
+     "start": 167,
+     "end": 583
     },
     {
      "key": "repeat",
-     "text": "Then you do it again next month. And the month after that. That's the whole trick.",
-     "start": 981,
-     "end": 1108
+     "text": "Then you do it again next month, and the month after that. That's the whole trick.",
+     "start": 601,
+     "end": 738
     }
    ]
   },
   {
    "id": "close",
    "chapter": "Your one job tonight",
-   "durationInFrames": 349,
+   "durationInFrames": 360,
    "lines": [
     {
      "key": "job",
-     "text": "So here's your one job. Tonight, set up one automatic transfer. Any amount. That's move one, and the machine starts turning.",
+     "text": "So here's your one job. Tonight, set up one automatic transfer. Any amount.",
      "start": 18,
-     "end": 252
+     "end": 176
     },
     {
      "key": "bye",
-     "text": "I'll see you in the next one.",
-     "start": 270,
-     "end": 312
+     "text": "That's move one, and the machine starts turning. I'll see you in the next one.",
+     "start": 194,
+     "end": 324
     }
    ]
   }
@@ -477,23 +392,23 @@
  "shorts": {
   "me-vs-larry": {
    "text": "You and Larry both save $200 a month. He starts 10 years later. Why does he end up with less than half?",
-   "durationInFrames": 210
+   "durationInFrames": 227
   },
   "hole-in-the-bucket": {
    "text": "$3,000 on a card at 22% can cost you over $700 in one year. That's why your savings never grow.",
-   "durationInFrames": 241
+   "durationInFrames": 282
   },
   "flip-the-order": {
    "text": "You save what's left at the end of the month? Stop. That's why there's never anything left.",
-   "durationInFrames": 201
+   "durationInFrames": 171
   },
   "no-ceiling": {
    "text": "You can only cut so many coffees before you hit the floor. Earning has no ceiling, but almost nobody guards it.",
-   "durationInFrames": 191
+   "durationInFrames": 224
   },
   "the-money-machine": {
    "text": "Stop waiting for a raise to get rich. 5 gears, a normal salary, and almost nobody builds all 5.",
-   "durationInFrames": 205
+   "durationInFrames": 233
   }
  }
 }

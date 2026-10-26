@@ -6,17 +6,23 @@
     {
       "id": "hook",
       "chapter": "The hook",
+      "set": "room",
       "lines": [
-        { "key": "open", "text": "Replace this with the winning hook from slash Y T script.", "expr": "grin", "beat": { "type": "text", "text": "YOUR HOOK HERE", "sub": "one idea per beat" } },
-        { "key": "promise", "text": "Then say what the video will do, in one sentence.", "beat": { "type": "steps", "items": ["ONE", "TWO", "THREE"] } }
+        { "key": "open", "text": "Replace this with the winning hook from slash Y T script.", "expr": "grin", "emote": "idea",
+          "beat": { "type": "icon", "icons": ["light-bulb", "money-bag"], "label": "YOUR HOOK HERE" } },
+        { "key": "promise", "text": "Then say what the video will do, in one sentence.",
+          "beat": { "type": "steps", "items": [{ "text": "ONE", "icon": "seedling" }, { "text": "TWO", "icon": "chart-increasing" }, { "text": "THREE", "icon": "trophy" }] } }
       ]
     },
     {
       "id": "point1",
       "chapter": "1. The first point",
+      "set": "office",
       "lines": [
-        { "key": "title", "text": "Point one. The first point.", "beat": { "type": "title", "n": 1, "title": "THE FIRST POINT", "sub": "a short promise", "color": "green" } },
-        { "key": "explain", "text": "Explain it with something to look at.", "beat": { "type": "jars", "jars": [{ "label": "SAVINGS", "fill": 0.6, "color": "green" }, { "label": "FUN", "fill": 0.3 }], "coins": true } }
+        { "key": "title", "text": "Point one. The first point.",
+          "beat": { "type": "title", "n": 1, "title": "THE FIRST POINT", "sub": "a short promise", "color": "green", "icon": "seedling" } },
+        { "key": "explain", "text": "Explain it with something to look at and something to learn.",
+          "beat": { "type": "cards", "items": [{ "icon": "books", "title": "A RULE", "text": "a named framework" }, { "icon": "bar-chart", "title": "AN EXAMPLE", "text": "labelled as an example" }] } }
       ]
     }
   ]

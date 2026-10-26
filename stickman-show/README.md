@@ -66,6 +66,7 @@ runs the whole pipeline. By hand it's:
 bash tools/setup.sh                                   # once per machine / cloud session
 npm run new-video -- compound-interest "Working Title"
 #   script.json: lines + a "beat" per line (see .claude/skills/stickman-video/beats.md)
+npm run icons   -- search money                       # find illustration names
 npm run check   -- video-002                          # validate + runtime estimate, no rendering
 npm run voice   -- videos/video-002-compound-interest # narration, timing, captions
 npm run preview -- video-002                          # one contact-sheet PNG of the whole video
@@ -75,10 +76,16 @@ npm run make    -- video-002 --skip-voice             # long video + thumbnail +
 
 ### How a video is built
 
-- **Beats, not code.** Each line in `script.json` can carry a `beat` (title card, list, bars, jars,
-  stamp, compare, props, a second character…) and Stick's pose and face. `AutoScene` turns those
-  into animation timed to the voice, so a normal video needs no hand-written scenes. Video 001 is
-  fully hand-animated and serves as the reference for special moments.
+- **Beats, not code.** Each line in `script.json` carries a `beat`: animated line charts,
+  counters, donut charts, icon grids, timelines, info cards, VS comparisons, lists, stamps, a
+  second character, and so on. It also sets Stick's pose, face, emote and what he's holding.
+  `AutoScene` turns that into animation timed to the voice, so a normal video needs no
+  hand-written scenes.
+- **The look.** Every scene happens on an illustrated set (room, kitchen, office, street, park,
+  bank, whiteboard, night stage) with a moving camera, 3,000+ colourful Fluent Emoji
+  illustrations, karaoke captions and swipe transitions.
+- **The voice.** Kokoro-82M (Apache-2.0, natural-sounding, runs offline on the CPU), voice set
+  per video in `video.json`.
 - **Everything is keyed to script lines.** Beats, scenes and Shorts point at line keys
   (`"way3.me"`), not seconds. Re-voicing or rewording a line re-times everything for free.
 - **Shorts come from the long video.** Each Short is a new spoken hook over a frozen frame, then

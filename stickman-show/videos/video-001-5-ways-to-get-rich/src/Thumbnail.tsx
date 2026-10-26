@@ -1,38 +1,31 @@
 import React from "react";
 import { AbsoluteFill } from "remotion";
-import { C, Coin, Jar, Stage, Stick, Txt } from "#engine";
+import { C, DISPLAY, Icon, NIGHT, POSES, Pose, SetBg, Stick } from "#engine";
 
 /**
- * The thumbnail brief from /yt-package: three words that do not repeat the title, one big
- * expression, high contrast at feed size. Title: "5 Ways to Get Rich on a Normal Salary".
+ * /yt-package brief: 3 words that don't repeat the title, one big expression, high contrast at
+ * feed size. Title: "5 Ways to Get Rich on a Normal Salary". Thumbnail: NO LUCK NEEDED.
  */
+const Word: React.FC<{ x: number; y: number; size: number; color: string; children: string }> = ({ x, y, size, color, children }) => (
+  <text x={x} y={y} fontFamily={DISPLAY} fontSize={size} fill={color} stroke={NIGHT} strokeWidth={22} strokeLinejoin="round" paintOrder="stroke" textAnchor="middle">
+    {children}
+  </text>
+);
+
 export const Thumbnail: React.FC = () => (
   <AbsoluteFill>
-    <Stage bg={C.goldLight}>
-      <rect x={0} y={860} width={1920} height={220} fill={C.green} />
-      <Txt x={1290} y={230} size={230} font="display" color={C.ink}>
+    <svg viewBox="0 0 1920 1080" width={1920} height={1080}>
+      <SetBg name="stage" />
+      <Icon name="chart-increasing" x={1580} y={760} size={330} rotate={8} />
+      <Icon name="money-bag" x={1200} y={790} size={360} rotate={-8} />
+      <Icon name="coin" x={1420} y={930} size={150} rotate={20} />
+      <Word x={1290} y={300} size={230} color={C.white}>
         NO LUCK
-      </Txt>
-      <Txt x={1290} y={450} size={230} font="display" color={C.green}>
+      </Word>
+      <Word x={1290} y={530} size={230} color={C.gold}>
         NEEDED
-      </Txt>
-      <Jar x={1290} y={930} label="SAVINGS" color={C.green} fill={0.85} scale={1.3} w={220} />
-      {[
-        [1080, 820],
-        [1500, 830],
-        [1110, 710],
-        [1470, 715],
-      ].map(([x, y], i) => (
-        <Coin key={i} x={x} y={y} scale={1.6} rotate={i * 25} />
-      ))}
-      <Stick
-        x={430}
-        y={960}
-        scale={2.6}
-        pose={{ la: [-150, -15], ra: [150, 15], ll: [-16, 6], rl: [16, -6], lean: 0, head: 0 }}
-        expr="grin"
-        seed={2}
-      />
-    </Stage>
+      </Word>
+      <Stick x={430} y={1000} scale={2.9} color={C.white} pose={POSES.cheer as Pose} expr="grin" emote="money" seed={2} />
+    </svg>
   </AbsoluteFill>
 );

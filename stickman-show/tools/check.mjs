@@ -3,14 +3,22 @@
 //   npm run check -- video-002
 import fs from "node:fs";
 import path from "node:path";
+import { ICON_NAMES, sync } from "./icons.mjs";
 
 // keep in sync with src/engine/AutoScene.tsx and src/engine/Stick.tsx
-const BEATS = ["title", "text", "tags", "list", "steps", "stamp", "bars", "jars", "compare", "flow", "prop", "props", "cross", "quote", "cast", "clear"];
-const PROPS = ["jar", "bucket", "car", "fancyCar", "moneyTree", "safe", "tv", "shop", "lemonade", "couch", "bathtub", "basket", "hammock", "sign", "cash", "coin", "bill", "envelope", "calendar", "phone", "card", "clock", "gear", "book", "certificate", "ticket", "rocket", "snowball", "monster", "hammer", "pizza", "tea", "tumbleweed"];
+const BEATS = ["title", "text", "icon", "cards", "chart", "counter", "donut", "grid", "timeline", "tags", "list", "steps", "stamp", "bars", "jars", "compare", "flow", "prop", "props", "cross", "quote", "cast", "clear"];
+// hand-drawn props; any Fluent icon name is accepted wherever a prop is
+const PROPS = ["jar", "bucket", "car", "moneyTree", "safe", "basket", "hammock", "phone", "card", "monster", "bathtub", "lemonade", "snowball"];
+const SETS = ["room", "office", "street", "park", "stage", "board", "kitchen", "bank"];
+const EMOTES = ["idea", "sweat", "question", "exclaim", "money", "love", "sparkle", "angry", "zzz", "fire", "think"];
+const CAMERAS = ["wide", "stick", "content", "close"];
+const BURSTS = ["confetti", "coins", "sparkle"];
+const ICONS = new Set(ICON_NAMES);
+const thing = (n) => PROPS.includes(n) || ICONS.has(n);
 const POSES = ["wave", "stand", "relaxed", "cheer", "pointR", "pointL", "pointUpR", "shrug", "sad", "think", "hold", "holdHigh", "present", "presentL", "hips", "shock", "facepalm", "push", "sit"];
 const EXPRS = ["smile", "grin", "flat", "frown", "o", "worried", "smug", "sleep"];
 const CAST = ["larry", "boss", "shady", "friend"];
-const WPM = 160; // measured: the channel voice at lengthScale 0.95, gaps included
+const WPM = 150; // measured: Kokoro am_michael at speed 1.0, pauses included (991 words -> 6:37)
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 export const findVideo = (target) => {
@@ -32,6 +40,7 @@ export const check = (dir) => {
     if (ids.has(s.id)) errors.push(`duplicate scene id "${s.id}"`);
     ids.add(s.id);
     if (!s.chapter) errors.push(`scene ${s.id}: missing "chapter"`);
+    if (s.set && !SETS.includes(s.set)) errors.push(`scene ${s.id}: unknown set "${s.set}" - one of ${SETS.join(", ")}`);
     const keys = new Set();
     for (const l of s.lines ?? []) {
       const where = `${s.id}.${l.key}`;
@@ -43,14 +52,28 @@ export const check = (dir) => {
       if (/\d/.test(l.text ?? "")) warn.push(`${where}: digits in spoken text - write numbers as words so the voice reads them right`);
       if (l.pose && !POSES.includes(l.pose)) errors.push(`${where}: unknown pose "${l.pose}"`);
       if (l.expr && !EXPRS.includes(l.expr)) errors.push(`${where}: unknown expr "${l.expr}"`);
+      if (l.emote && !EMOTES.includes(l.emote)) errors.push(`${where}: unknown emote "${l.emote}"`);
+      if (l.camera && !CAMERAS.includes(l.camera)) errors.push(`${where}: unknown camera "${l.camera}"`);
+      if (l.burst && !BURSTS.includes(l.burst)) errors.push(`${where}: unknown burst "${l.burst}"`);
+      if (l.holding && !ICONS.has(l.holding)) errors.push(`${where}: holding "${l.holding}" is not a Fluent icon`);
       const b = l.beat;
       if (b) {
         if (!BEATS.includes(b.type)) errors.push(`${where}: unknown beat type "${b.type}"`);
-        if (b.type === "prop" && !PROPS.includes(b.name)) errors.push(`${where}: unknown prop "${b.name}"`);
-        if (b.type === "props") for (const it of b.items ?? []) if (!PROPS.includes(it.name)) errors.push(`${where}: unknown prop "${it.name}"`);
+        if (b.type === "prop" && !thing(b.name)) errors.push(`${where}: "${b.name}" is not a prop or Fluent icon`);
+        if (b.type === "props") for (const it of b.items ?? []) if (!thing(it.name)) errors.push(`${where}: "${it.name}" is not a prop or Fluent icon`);
+        // every icon named anywhere in the beat must exist
+        JSON.stringify(b, (k, v) => {
+          if ((k === "icon" && typeof v === "string") || (k === "icons" && Array.isArray(v))) {
+            for (const n of [].concat(v)) if (!ICONS.has(n)) errors.push(`${where}: unknown icon "${n}" (npm run icons -- search <word>)`);
+          }
+          return v;
+        });
+        for (const k of ["series", "segments", "points"]) if (k in b && (!Array.isArray(b[k]) || !b[k].length)) errors.push(`${where}: "${k}" must be a non-empty list`);
+        if (b.type === "chart") for (const s of b.series ?? []) if ((s.values ?? []).length !== (b.x ?? []).length) errors.push(`${where}: series "${s.label}" needs one value per x label`);
         if (b.type === "cast" && !CAST.includes(b.who)) errors.push(`${where}: unknown cast "${b.who}"`);
         for (const k of ["items", "bars", "jars"]) if (k in b && (!Array.isArray(b[k]) || !b[k].length)) errors.push(`${where}: "${k}" must be a non-empty list`);
         if ((b.items?.length ?? 0) > 6) warn.push(`${where}: ${b.items.length} items is a lot for one beat`);
+        if (b.type === "cross") for (const n of b.items ?? []) if (!thing(n) && n.length > 14) warn.push(`${where}: cross item "${n}" is long text - use an icon name`);
       }
     }
     lineKeys.set(s.id, keys);
@@ -64,6 +87,8 @@ export const check = (dir) => {
     }
     if (!sh.hook || !sh.onScreen || !sh.slug) errors.push(`short ${sh.n}: needs slug, hook and onScreen`);
   }
+  const iconSync = sync();
+  for (const n of iconSync.missing) errors.push(`unknown icon "${n}"`);
   const secs = (words / WPM) * 60;
   return { errors, warn, words, estimate: `${Math.floor(secs / 60)}:${String(Math.round(secs % 60)).padStart(2, "0")}` };
 };

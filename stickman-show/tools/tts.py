@@ -1,4 +1,8 @@
-"""Voice a video's script with Piper and write the timing its scenes animate against.
+"""Voice a video's script and write the timing its scenes animate against.
+
+Engines (video.json -> "voice"):
+    {"engine": "kokoro", "voice": "am_michael", "speed": 1.0}   default - natural, Apache-2.0
+    {"engine": "piper", "model": "en_US-norman-medium", "lengthScale": 0.95}   fallback
 
     python3 tools/tts.py videos/video-002-some-slug               # narration + Shorts hooks
     python3 tools/tts.py videos/video-002-some-slug --shorts-only # only the Shorts hooks
@@ -11,7 +15,7 @@ Writes  <video>/audio/vo/<scene>.mp3      one narration track per scene
         <video>/captions/narration.srt    the whole narration with absolute times (feeds
                                           /yt-chapters, /yt-edit and /yt-shorts)
 
-Piper and the voice model come from tools/setup.sh unless --piper / --model are given.
+Models come from tools/setup.sh (tools/.models/). Piper paths can be overridden with --piper / --model.
 """
 
 import argparse
@@ -48,6 +52,27 @@ def synth(piper, model, text, length_scale):
     if len(loud):
         pcm = pcm[max(0, loud[0] - int(0.03 * rate)): loud[-1] + int(0.08 * rate)]
     return pcm, rate
+
+
+def trim(pcm, rate):
+    # trim the model's own leading and trailing silence so our gaps are the only gaps
+    loud = np.nonzero(np.abs(pcm) > 400)[0]
+    if len(loud):
+        pcm = pcm[max(0, loud[0] - int(0.03 * rate)): loud[-1] + int(0.08 * rate)]
+    return pcm
+
+
+_kokoro = None
+
+
+def synth_kokoro(text, voice, speed):
+    global _kokoro
+    if _kokoro is None:
+        from kokoro_onnx import Kokoro
+        _kokoro = Kokoro(str(TOOLS / ".models" / "kokoro" / "model.onnx"), str(TOOLS / ".models" / "kokoro" / "voices.npz"))
+    samples, rate = _kokoro.create(text, voice=voice, speed=speed, lang="en-us")
+    pcm = (np.clip(samples, -1, 1) * 32767).astype(np.int16)
+    return trim(pcm, rate), rate
 
 
 def write_mp3(path, pcm, rate):
@@ -97,8 +122,13 @@ def main():
     video = args.video.resolve()
     meta = json.loads((video / "video.json").read_text())
     voice = meta.get("voice", {})
+    engine = voice.get("engine", "kokoro")
     model = args.model or str(TOOLS / ".models" / f"{voice.get('model', 'en_US-norman-medium')}.onnx")
     length_scale = args.length_scale or voice.get("lengthScale", 0.95)
+    if engine == "kokoro":
+        say = lambda text: synth_kokoro(text, voice.get("voice", "am_michael"), voice.get("speed", 1.0))
+    else:
+        say = lambda text: synth(args.piper, model, text, length_scale)
     script = json.loads((video / "script.json").read_text())
     shorts = meta.get("shorts", [])
     timing_path = video / "src" / "timing.json"
@@ -106,9 +136,13 @@ def main():
     texts = [s["hook"] for s in shorts]
     if not args.shorts_only:
         texts += [line["text"] for scene in script["scenes"] for line in scene["lines"]]
-    # one Piper process per line is slow to start, so voice every line up front in parallel
-    with ThreadPoolExecutor(4) as pool:
-        voiced = dict(zip(texts, pool.map(lambda t: synth(args.piper, model, t, length_scale), texts)))
+    if engine == "kokoro":
+        # one model in memory; it already uses every core
+        voiced = {t: say(t) for t in dict.fromkeys(texts)}
+    else:
+        # one Piper process per line is slow to start, so voice every line up front in parallel
+        with ThreadPoolExecutor(4) as pool:
+            voiced = dict(zip(texts, pool.map(say, texts)))
 
     if args.shorts_only:
         timing = json.loads(timing_path.read_text())

@@ -10,3 +10,6 @@ export * from "./Short";
 export * from "./types";
 export * from "./define";
 export * from "./AutoScene";
+export * from "./Icon";
+export * from "./sets";
+export * from "./camera";

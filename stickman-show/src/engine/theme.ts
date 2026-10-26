@@ -19,9 +19,14 @@ export const C = {
 
 export const HAND = "PatrickHand";
 export const DISPLAY = "LuckiestGuy";
+/** Clean, bold, rounded: captions, card text, numbers. */
+export const BOLD = "Baloo2";
+export const NIGHT = "#1D2142";
 
 loadFont({ family: HAND, url: staticFile("fonts/PatrickHand.woff2") });
 loadFont({ family: DISPLAY, url: staticFile("fonts/LuckiestGuy.woff2") });
+loadFont({ family: BOLD, url: staticFile("fonts/Baloo2-ExtraBold.woff2"), weight: "800" });
+loadFont({ family: BOLD, url: staticFile("fonts/Baloo2-SemiBold.woff2"), weight: "600" });
 
 export const W = 1920;
 export const H = 1080;

@@ -1,13 +1,13 @@
 
-  Your paycheck lands, and 3 weeks later you're broke again. It's not your salary. It's 5 moves nobody showed you, and almost none of them cost a cent.
+  Your paycheck lands, and 3 weeks later you're broke again. Stop blaming your salary. It's 5 moves nobody showed you, and almost none of them cost a cent.
   ------------------------------------------------------------------------
     SPECIFICITY   90  ##################
     ADDRESS      100  ####################
-    STAKES        88  #################
+    STAKES       100  ####################
     CURIOSITY     58  ###########
     BREVITY       72  ##############
-    VERDICT       72  STRONG
-    formula      Unclassified  (no formula matched - that is usually a summary, not a hook)
+    VERDICT       74  STRONG
+    formula      The Mistake  (1 pattern matched)
     weakest      CURIOSITY - cut the half of the sentence that answers itself
 
   Stop waiting to earn more before you start. In 7 minutes, you'll know the 5 moves that build wealth, and why most people never make move 3.
@@ -54,16 +54,5 @@
     formula      Contrarian Flip  (1 pattern matched)
     weakest      STAKES - name what it costs them to keep doing it the current way
 
-  winner: Your paycheck lands, and 3 weeks later you're broke again. It's not your salary. It's 5 moves nobody showed you, and almost none of them cost a cent.  (72, STRONG)
+  winner: Your paycheck lands, and 3 weeks later you're broke again. Stop blaming your salary. It's 5 moves nobody showed you, and almost none of them cost a cent.  (74, STRONG)
 
-
-  Your paycheck lands, and 3 weeks later you're broke again. Stop blaming your salary. It's 5 moves nobody showed you, and almost none of them cost a cent.
-  ------------------------------------------------------------------------
-    SPECIFICITY   90  ##################
-    ADDRESS      100  ####################
-    STAKES       100  ####################
-    CURIOSITY     58  ###########
-    BREVITY       72  ##############
-    VERDICT       74  STRONG
-    formula      The Mistake  (1 pattern matched)
-    weakest      CURIOSITY - cut the half of the sentence that answers itself

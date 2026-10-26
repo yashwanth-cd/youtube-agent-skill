@@ -40,8 +40,13 @@ npm run new-video -- <kebab-slug> "<working title>"     # -> videos/video-NNN-<s
 - Shape: hook (0–15s) → the turn (say what the video does, no intro) → one idea per beat → the
   payoff, said explicitly → **one** ask. Channel default: 5 numbered moves, 6–8 minutes.
 - Write it straight into `script.json` as scenes → lines. **Give every line a `beat`** from
-  `beats.md` unless the previous beat should stay up. Spoken text: numbers as words ("two
-  hundred dollars"). Beats: digits and $ are fine.
+  `beats.md` unless the previous beat should stay up, and lean on the information beats (chart,
+  counter, donut, cards, grid, timeline, compare). Give each scene its own `set`. Add `emote`,
+  `holding` and `burst` where they help the joke or the point. Spoken text: numbers as words
+  ("two hundred dollars"). Beats: digits and $ are fine.
+- Teach something concrete in every section: a named framework, rule of thumb, worked example or
+  common mistake. A list of vague tips is what the viewer can get anywhere.
+- Icons: `npm run icons -- search <word>` (e.g. `search money`, `search house`). 3,000+ Fluent Emoji.
 - Length: `npm run check -- video-NNN` prints the word count and the runtime estimate (calibrated
   to the channel voice). Aim for 1,000–1,250 words for 6–8 minutes. Fix every ERROR it prints.
 
@@ -58,7 +63,7 @@ the runtime estimate. Ask "ship it, or change it?". Skip this only if they said 
 ## 4. Voice, look, fix
 
 ```bash
-npm run voice -- videos/video-NNN-<slug>      # narration mp3s, src/timing.json, captions/narration.srt
+npm run voice -- videos/video-NNN-<slug>      # Kokoro narration mp3s, src/timing.json, captions/narration.srt
 npm run preview -- video-NNN                  # ONE contact sheet: a frame per line -> out/preview-vNNN-full.png
 ```
 Read the single preview image. Fix overlaps by changing beats in `script.json`. Changing spoken
@@ -98,3 +103,6 @@ plain git (GitHub blocks LFS on forks), so check every output file is under 100 
 - Don't re-voice to tweak visuals. Beats and scenes re-time from `timing.json` for free.
 - A finished video needs: `script.json`, `video.json`, `PUBLISH.md`, `src/Thumbnail.tsx`, and
   zero hand-written scenes in the normal case.
+- Voice: Kokoro `am_michael` (set in `video.json` → `voice`). The other bundled voices are
+  am_fenrir, am_puck, am_adam, bm_george, bm_fable, af_heart, af_bella. Don't switch to a voice or
+  model with a non-commercial licence.

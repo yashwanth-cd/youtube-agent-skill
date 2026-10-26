@@ -1,6 +1,7 @@
 import React from "react";
 import { useCurrentFrame } from "remotion";
 import { ease, lerp, rand } from "./anim";
+import { Icon } from "./Icon";
 import { C } from "./theme";
 
 /**
@@ -102,12 +103,33 @@ type Props = {
   rotate?: number;
   opacity?: number;
   accessory?: "hair" | "cap" | "glasses" | "shades" | "tie" | "none";
+  /** A little reaction above the head. */
+  emote?: Emote;
+  /** A Fluent Emoji icon held in the right hand. */
+  holding?: string;
+  /** White "sticker" outline so the figure reads on any background. */
+  outline?: boolean;
   children?: React.ReactNode;
+};
+
+export type Emote = "idea" | "sweat" | "question" | "exclaim" | "money" | "love" | "sparkle" | "angry" | "zzz" | "fire" | "think";
+const EMOTE_ICON: Record<Emote, string> = {
+  idea: "light-bulb",
+  sweat: "droplet",
+  question: "red-question-mark",
+  exclaim: "red-exclamation-mark",
+  money: "money-with-wings",
+  love: "red-heart",
+  sparkle: "sparkles",
+  angry: "anger-symbol",
+  zzz: "zzz",
+  fire: "fire",
+  think: "thought-balloon",
 };
 
 const SH = -212;
 const HIP = -118;
-const HEAD_R = 30;
+const HEAD_R = 32;
 const ARM = [56, 52];
 const LEG = [62, 60];
 
@@ -133,6 +155,9 @@ export const Stick: React.FC<Props> = ({
   rotate = 0,
   opacity = 1,
   accessory = "hair",
+  emote,
+  holding,
+  outline = true,
   children,
 }) => {
   const frame = useCurrentFrame();
@@ -161,26 +186,29 @@ export const Stick: React.FC<Props> = ({
   const mouthOpen = talking ? 2 + Math.abs(Math.sin(frame * 0.9 + seed)) * 6 * (0.6 + rand(Math.floor(frame / 3) + seed) * 0.6) : 0;
   const ex = look * 7;
 
-  const stroke = { stroke: color, strokeWidth: 9, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, fill: "none" };
+  // on a white figure (night stage) the face is drawn in ink so it stays visible
+  const face = color === C.white ? C.ink : color;
+  const stroke = { stroke: color, strokeWidth: 10, strokeLinecap: "round" as const, strokeLinejoin: "round" as const, fill: "none" };
 
+  const faceStroke = { ...stroke, stroke: face };
   const mouth = () => {
-    if (talking) return <ellipse cx={ex} cy={11} rx={7} ry={mouthOpen} fill={color} />;
+    if (talking) return <ellipse cx={ex} cy={11} rx={7} ry={mouthOpen} fill={face} />;
     switch (expr) {
       case "grin":
-        return <path d={`M ${ex - 12} 6 Q ${ex} 24 ${ex + 12} 6 Z`} fill={color} />;
+        return <path d={`M ${ex - 12} 6 Q ${ex} 24 ${ex + 12} 6 Z`} fill={face} />;
       case "flat":
-        return <path d={`M ${ex - 9} 11 L ${ex + 9} 11`} {...stroke} strokeWidth={4} />;
+        return <path d={`M ${ex - 9} 11 L ${ex + 9} 11`} {...faceStroke} strokeWidth={4} />;
       case "frown":
       case "worried":
-        return <path d={`M ${ex - 10} 15 Q ${ex} 6 ${ex + 10} 15`} {...stroke} strokeWidth={4} />;
+        return <path d={`M ${ex - 10} 15 Q ${ex} 6 ${ex + 10} 15`} {...faceStroke} strokeWidth={4} />;
       case "o":
-        return <ellipse cx={ex} cy={12} rx={6} ry={8} fill={color} />;
+        return <ellipse cx={ex} cy={12} rx={6} ry={8} fill={face} />;
       case "smug":
-        return <path d={`M ${ex - 9} 11 Q ${ex + 2} 15 ${ex + 11} 7`} {...stroke} strokeWidth={4} />;
+        return <path d={`M ${ex - 9} 11 Q ${ex + 2} 15 ${ex + 11} 7`} {...faceStroke} strokeWidth={4} />;
       case "sleep":
-        return <ellipse cx={ex} cy={12} rx={4} ry={3} fill={color} />;
+        return <ellipse cx={ex} cy={12} rx={4} ry={3} fill={face} />;
       default:
-        return <path d={`M ${ex - 11} 8 Q ${ex} 18 ${ex + 11} 8`} {...stroke} strokeWidth={4} />;
+        return <path d={`M ${ex - 11} 8 Q ${ex} 18 ${ex + 11} 8`} {...faceStroke} strokeWidth={4} />;
     }
   };
 
@@ -188,20 +216,36 @@ export const Stick: React.FC<Props> = ({
     if (expr === "sleep" || blinking) {
       return (
         <>
-          <path d={`M ${ex - 15} -4 Q ${ex - 10} 0 ${ex - 5} -4`} {...stroke} strokeWidth={3.5} />
-          <path d={`M ${ex + 5} -4 Q ${ex + 10} 0 ${ex + 15} -4`} {...stroke} strokeWidth={3.5} />
+          <path d={`M ${ex - 15} -4 Q ${ex - 10} 0 ${ex - 5} -4`} {...faceStroke} strokeWidth={3.5} />
+          <path d={`M ${ex + 5} -4 Q ${ex + 10} 0 ${ex + 15} -4`} {...faceStroke} strokeWidth={3.5} />
         </>
       );
     }
     const big = expr === "o" ? 1.35 : 1;
     return (
       <>
-        <ellipse cx={ex - 10} cy={-4} rx={3.6 * big} ry={5.2 * big} fill={color} />
-        <ellipse cx={ex + 10} cy={-4} rx={3.6 * big} ry={5.2 * big} fill={color} />
+        <ellipse cx={ex - 10} cy={-4} rx={3.8 * big} ry={5.6 * big} fill={face} />
+        <ellipse cx={ex + 10} cy={-4} rx={3.8 * big} ry={5.6 * big} fill={face} />
+        <circle cx={ex - 8.6} cy={-6.4} r={1.5} fill={C.white} />
+        <circle cx={ex + 11.4} cy={-6.4} r={1.5} fill={C.white} />
+        {(expr === "smile" || expr === "grin" || expr === "smug") && (
+          <>
+            <path d={`M ${ex - 16} -15 Q ${ex - 10} -19 ${ex - 4} -15`} {...faceStroke} strokeWidth={3} />
+            <path d={`M ${ex + 4} -15 Q ${ex + 10} -19 ${ex + 16} -15`} {...faceStroke} strokeWidth={3} />
+            <ellipse cx={ex - 18} cy={6} rx={6} ry={3.5} fill="#F28B82" opacity={0.45} />
+            <ellipse cx={ex + 18} cy={6} rx={6} ry={3.5} fill="#F28B82" opacity={0.45} />
+          </>
+        )}
+        {expr === "o" && (
+          <>
+            <path d={`M ${ex - 16} -19 Q ${ex - 10} -24 ${ex - 4} -19`} {...faceStroke} strokeWidth={3} />
+            <path d={`M ${ex + 4} -19 Q ${ex + 10} -24 ${ex + 16} -19`} {...faceStroke} strokeWidth={3} />
+          </>
+        )}
         {expr === "worried" && (
           <>
-            <path d={`M ${ex - 17} -14 L ${ex - 5} -18`} {...stroke} strokeWidth={3.5} />
-            <path d={`M ${ex + 5} -18 L ${ex + 17} -14`} {...stroke} strokeWidth={3.5} />
+            <path d={`M ${ex - 17} -14 L ${ex - 5} -18`} {...faceStroke} strokeWidth={3.5} />
+            <path d={`M ${ex + 5} -18 L ${ex + 17} -14`} {...faceStroke} strokeWidth={3.5} />
           </>
         )}
       </>
@@ -210,7 +254,17 @@ export const Stick: React.FC<Props> = ({
 
   return (
     <g transform={`translate(${x} ${y}) rotate(${rotate}) scale(${scale})`} opacity={opacity}>
-      <ellipse cx={0} cy={4} rx={46} ry={8} fill={C.ink} opacity={0.1 * (1 - Math.min(1, bob / 80))} />
+      <ellipse cx={0} cy={4} rx={46} ry={8} fill={C.ink} opacity={0.14 * (1 - Math.min(1, bob / 80))} />
+      {outline && (
+        <g stroke={color === C.ink ? C.white : C.ink} strokeWidth={19} strokeLinecap="round" strokeLinejoin="round" fill="none" opacity={0.95}>
+          <path d={ll.d} />
+          <path d={rl.d} />
+          <path d={`M ${hipX} ${hipY} L ${shX} ${shY} L ${neckX} ${neckY}`} />
+          <path d={la.d} />
+          <path d={ra.d} />
+          <circle cx={headX} cy={headY} r={HEAD_R + 5} fill={color === C.ink ? C.white : C.ink} />
+        </g>
+      )}
       <path d={ll.d} {...stroke} />
       <path d={rl.d} {...stroke} />
       <path d={`M ${hipX} ${hipY} L ${shX} ${shY} L ${neckX} ${neckY}`} {...stroke} />
@@ -246,6 +300,12 @@ export const Stick: React.FC<Props> = ({
           d={`M ${neckX} ${neckY + 6} L ${neckX - 7} ${neckY + 16} L ${(neckX + shX) / 2} ${shY + 40} L ${neckX + 7} ${neckY + 16} Z`}
           fill={C.red}
         />
+      )}
+      {holding && <Icon name={holding} x={ra.hx + 10} y={ra.hy - 20} size={96} shadow={false} float />}
+      {emote && (
+        <g transform={`translate(${headX + 58} ${headY - 62 + Math.sin(frame * 0.12) * 5}) scale(${0.7 + 0.3 * Math.min(1, ease(frame % 1000, 0, 1))})`}>
+          <Icon name={EMOTE_ICON[emote]} x={0} y={0} size={emote === "sweat" ? 44 : 70} shadow={false} rotate={Math.sin(frame * 0.1) * 6} />
+        </g>
       )}
       {/* drawn in the figure's own space - use hands(pose) to put a prop in a hand */}
       {children}

@@ -1,7 +1,7 @@
 import React from "react";
 import { useCurrentFrame } from "remotion";
 import { ease, pop, rand } from "./anim";
-import { C, DISPLAY, GROUND, H, HAND, W } from "./theme";
+import { BOLD, C, DISPLAY, GROUND, H, HAND, W } from "./theme";
 
 /** The whole frame is one SVG in 1920x1080 space. */
 export const Stage: React.FC<{ children: React.ReactNode; bg?: string }> = ({ children, bg = C.paper }) => (
@@ -71,7 +71,7 @@ type TextProps = {
   y: number;
   size?: number;
   color?: string;
-  font?: "hand" | "display";
+  font?: "hand" | "display" | "bold";
   anchor?: "start" | "middle" | "end";
   children: React.ReactNode;
   opacity?: number;
@@ -85,11 +85,11 @@ export const Txt: React.FC<TextProps> = ({ x, y, size = 56, color = C.ink, font 
     y={y}
     fontSize={size}
     fill={color}
-    fontFamily={font === "display" ? DISPLAY : HAND}
+    fontFamily={font === "display" ? DISPLAY : font === "bold" ? BOLD : HAND}
     textAnchor={anchor}
     dominantBaseline="middle"
     opacity={opacity}
-    fontWeight={weight}
+    fontWeight={weight ?? (font === "bold" ? 800 : undefined)}
     transform={rotate ? `rotate(${rotate} ${x} ${y})` : undefined}
     style={{ letterSpacing: font === "display" ? 2 : 0 }}
   >
@@ -98,7 +98,7 @@ export const Txt: React.FC<TextProps> = ({ x, y, size = 56, color = C.ink, font 
 );
 
 /** Text on a rounded paper tag. Width is estimated from the character count. */
-export const Tag: React.FC<{ x: number; y: number; text: string; size?: number; fill?: string; color?: string; rotate?: number; font?: "hand" | "display" }> = ({
+export const Tag: React.FC<{ x: number; y: number; text: string; size?: number; fill?: string; color?: string; rotate?: number; font?: "hand" | "display" | "bold" }> = ({
   x,
   y,
   text,
@@ -108,7 +108,7 @@ export const Tag: React.FC<{ x: number; y: number; text: string; size?: number; 
   rotate = 0,
   font = "hand",
 }) => {
-  const w = text.length * size * (font === "display" ? 0.62 : 0.48) + size * 1.1;
+  const w = text.length * size * (font === "display" ? 0.62 : font === "bold" ? 0.52 : 0.48) + size * 1.1;
   const h = size * 1.6;
   return (
     <g transform={`translate(${x} ${y}) rotate(${rotate})`}>

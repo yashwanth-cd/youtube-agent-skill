@@ -7,6 +7,6 @@
   "status": "scripting",
   "runtime": null,
   "youtube": { "url": null, "published": null },
-  "voice": { "engine": "piper", "model": "en_US-norman-medium", "lengthScale": 0.95 },
+  "voice": { "engine": "kokoro", "voice": "am_michael", "speed": 1.0 },
   "shorts": []
 }
