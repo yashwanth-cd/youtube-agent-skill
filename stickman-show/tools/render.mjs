@@ -11,6 +11,7 @@ import { renderMedia, renderStill, selectComposition } from "@remotion/renderer"
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
+import { normalize } from "./loudness.mjs";
 
 const root = path.resolve(path.dirname(new URL(import.meta.url).pathname), "..");
 const args = process.argv.slice(2);
@@ -59,5 +60,6 @@ for (const job of jobs) {
       if (pct % 10 === 0 && pct !== last) console.log(`  ${pct}%`), (last = pct);
     },
   });
+  normalize(job.file);
 }
 console.log("done. Update video.json status, then: npm run index");
