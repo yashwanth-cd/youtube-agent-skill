@@ -32,7 +32,9 @@ stickman-show/
 ├── CLAUDE.md                  how Claude makes a video here - read by Claude Code automatically
 ├── channel/
 │   ├── voice.md               the channel's voice; every skill reads it
-│   └── characters.md          the cast, colours and fonts
+│   ├── characters.md          the cast, colours and fonts
+│   ├── channel-setup.md       name, handle, description, keywords, upload defaults, layout, playlists
+│   └── branding/              profile picture, banner, watermark, wordmark (npm run branding)
 ├── src/
 │   ├── engine/                shared by every video: stick-figure rig, props, captions, Shorts layout
 │   ├── videos.ts              the list of videos (new-video appends to it)

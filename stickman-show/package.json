@@ -43,7 +43,8 @@
     "preview": "node tools/preview.mjs",
     "make": "node tools/make.mjs",
     "check": "node tools/check.mjs",
-    "icons": "node tools/icons.mjs"
+    "icons": "node tools/icons.mjs",
+    "branding": "node tools/branding.mjs"
   },
   "allowScripts": {
     "esbuild": false
