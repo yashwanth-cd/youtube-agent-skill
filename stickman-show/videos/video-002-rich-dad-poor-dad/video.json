@@ -4,8 +4,8 @@
   "slug": "rich-dad-poor-dad",
   "title": "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes",
   "thumbnailText": "NOT AN ASSET?",
-  "status": "scripting",
-  "runtime": null,
+  "status": "rendered",
+  "runtime": "7:13",
   "youtube": {
     "url": null,
     "published": null
@@ -13,7 +13,7 @@
   "voice": {
     "engine": "kokoro",
     "voice": "am_michael",
-    "speed": 1.0
+    "speed": 1
   },
   "shorts": [
     {
