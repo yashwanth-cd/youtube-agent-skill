@@ -1,13 +1,14 @@
 import React from "react";
 import { Sequence, useCurrentFrame } from "remotion";
-import { Line, SceneTiming, ease, lerp, pop, speaking } from "./anim";
+import { Line, SceneTiming, ease, lerp, pop } from "./anim";
 import { CamKey } from "./camera";
 import { Cue, Scene } from "./common";
 import { Burst, Icon } from "./Icon";
+import { Zzz } from "./common";
 import { ICONS } from "./icons.generated";
 import * as P from "./props";
 import { DARK_SETS, SetName } from "./sets";
-import { Emote, Expr, POSES, PoseKey, PoseName, Stick, poseAt, waving } from "./Stick";
+import { Emote, Expr, POSES, Pose, PoseKey, PoseName, Stick, poseAt, walking, waving } from "./Stick";
 import { C, GROUND, H, NIGHT, W } from "./theme";
 import { Arrow, CrossOut, Stamp, Txt } from "./ui";
 
@@ -45,7 +46,7 @@ export type Beat =
   | { type: "props"; items: { name: string; label?: string }[] }
   | { type: "cross"; items: string[] }
   | { type: "quote"; text: string }
-  | { type: "cast"; who: CastName; label?: string; expr?: Expr; pose?: PoseName; emote?: Emote; stay?: boolean }
+  | { type: "cast"; who: CastName; label?: string; expr?: Expr; pose?: PoseName; emote?: Emote; stay?: boolean; x?: number; enter?: boolean }
   | { type: "clear" };
 
 export type CameraMode = "wide" | "stick" | "content" | "close";
@@ -60,8 +61,24 @@ export type ScriptLine = {
   camera?: CameraMode;
   burst?: "confetti" | "coins" | "sparkle";
   beat?: Beat;
+  /** Who says the line (default Stick). Other characters get their own voice and lip sync. */
+  speaker?: "stick" | CastName;
+  /** Walk to this x (0-1920) at the start of the line. */
+  x?: number;
+  /** Physical acting for the line. */
+  act?: Act;
+  /** Hand an icon from one character to another (it flies across, the receiver holds it). */
+  give?: { icon: string; from: "stick" | "cast"; to: "stick" | "cast" };
+  /** Coins fly from one character (or an x position) to another. */
+  coins?: { from: "stick" | "cast" | number; to: "stick" | "cast" | number };
 };
-export type ScriptScene = { id: string; chapter: string; set?: SetName; stickX?: number; lines: ScriptLine[] };
+
+export type Act = "enter" | "exit" | "jump" | "panic" | "fall" | "sleep" | "shiver" | "think" | "celebrate";
+const ACT_POSE: Record<Act, PoseName | undefined> = { enter: "stand", exit: "stand", jump: "cheer", panic: "shock", fall: "shock", sleep: "stand", shiver: "sad", think: "think", celebrate: "cheer" };
+const ACT_EXPR: Record<Act, Expr | undefined> = { enter: undefined, exit: undefined, jump: "grin", panic: "worried", fall: "o", sleep: "sleep", shiver: "worried", think: "flat", celebrate: "grin" };
+const ACT_EMOTE: Record<Act, Emote | undefined> = { enter: undefined, exit: undefined, jump: "sparkle", panic: "sweat", fall: "exclaim", sleep: "zzz", shiver: "sweat", think: "think", celebrate: "sparkle" };
+/** `bg` is a prompt for a painted background (tools/wangp_assets.py); without one the drawn `set` is used. */
+export type ScriptScene = { id: string; chapter: string; set?: SetName; bg?: string; stickX?: number; lines: ScriptLine[] };
 export type Script = { scenes: ScriptScene[] };
 
 const COLOR: Record<string, string> = { green: C.green, red: C.red, blue: C.blue, gold: C.gold, ink: C.ink, purple: "#8E5AD8" };
@@ -137,7 +154,14 @@ const Card: React.FC<{ x: number; y: number; w: number; h: number; fill?: string
 );
 
 /** A rounded label chip, optionally with an icon on its left. */
-const Chip: React.FC<{ text: string; icon?: string; fill?: string; size?: number; font?: "bold" | "display" }> = ({ text, icon, fill = C.white, size = 46, font = "bold" }) => {
+/** Shrinks a font size until the text's estimated width fits `maxW`. */
+export const fit = (text: string, size: number, maxW: number, font: "bold" | "display" = "display") => {
+  const w = text.length * size * (font === "display" ? 0.62 : 0.54);
+  return w <= maxW ? size : Math.max(18, Math.floor((size * maxW) / w));
+};
+
+const Chip: React.FC<{ text: string; icon?: string; fill?: string; size?: number; font?: "bold" | "display"; maxW?: number }> = ({ text, icon, fill = C.white, size: want = 46, font = "bold", maxW = 760 }) => {
+  const size = fit(text, want, maxW - want * 1.2 - (icon ? want * 1.3 : 0), font);
   const iconW = icon ? size * 1.3 : 0;
   const w = text.length * size * (font === "display" ? 0.62 : 0.54) + size * 1.2 + iconW;
   const h = size * 1.7;
@@ -168,7 +192,7 @@ const BeatView: React.FC<{ beat: Beat; f: number; len: number; dark: boolean }> 
       return (
         <Popper f={f} at={0} x={CX} y={beat.icon ? 470 : 420}>
           {beat.icon && <Icon name={beat.icon} x={0} y={-230} size={200} float />}
-          <Txt x={0} y={0} size={beat.text.length > 20 ? 86 : 116} font="display" color={col(beat.color, ink)}>
+          <Txt x={0} y={0} size={fit(beat.text, 116, 1240)} font="display" color={col(beat.color, ink)}>
             {beat.text}
           </Txt>
           {beat.sub && (
@@ -215,12 +239,12 @@ const BeatView: React.FC<{ beat: Beat; f: number; len: number; dark: boolean }> 
             <Popper key={i} f={f} at={spread(i, n, len)} x={CX + (i - (n - 1) / 2) * gap} y={440}>
               <Card x={0} y={0} w={w} h={470} accent={col(c.color ?? CYCLE[i % 5], C.green)}>
                 {c.icon && <Icon name={c.icon} x={0} y={-90} size={180} float seed={i} shadow={false} />}
-                <Txt x={0} y={60} size={c.title.length > 12 ? 40 : 50} font="display">
+                <Txt x={0} y={60} size={fit(c.title, 50, w - 40)} font="display">
                   {c.title}
                 </Txt>
                 {c.text &&
-                  wrap(c.text, n >= 3 ? 16 : 22).map((ln, k) => (
-                    <Txt key={k} x={0} y={120 + k * 44} size={36} font="bold" color={C.inkSoft} weight={600}>
+                  wrap(c.text, n >= 4 ? 12 : n === 3 ? 16 : 22).map((ln, k) => (
+                    <Txt key={k} x={0} y={120 + k * (n >= 4 ? 38 : 44)} size={n >= 4 ? 30 : 36} font="bold" color={C.inkSoft} weight={600}>
                       {ln}
                     </Txt>
                   ))}
@@ -491,14 +515,16 @@ const BeatView: React.FC<{ beat: Beat; f: number; len: number; dark: boolean }> 
         <>
           {beat.items.map((t, i) => {
             const n = beat.items.length;
-            const x = CX + (i - (n - 1) / 2) * Math.min(250, 1050 / n);
+            const gap = Math.min(250, 1150 / n);
+            const x = CX + (i - (n - 1) / 2) * gap;
             const icon = itemIcon(t);
+            const r = Math.min(84, gap * 0.4);
             return (
               <Popper key={i} f={f} at={spread(i, n, len)} x={x} y={400}>
-                <circle r={84} fill="#000" opacity={0.12} cx={6} cy={10} />
-                <circle r={84} fill={col(CYCLE[i % 5], C.green)} stroke={C.ink} strokeWidth={7} />
-                {icon ? <Icon name={icon} x={0} y={0} size={100} shadow={false} /> : <Txt x={0} y={8} size={86} color={C.white} font="display">{i + 1}</Txt>}
-                <Txt x={0} y={140} size={36} font="display" color={ink}>
+                <circle r={r} fill="#000" opacity={0.12} cx={6} cy={10} />
+                <circle r={r} fill={col(CYCLE[i % 5], C.green)} stroke={C.ink} strokeWidth={7} />
+                {icon ? <Icon name={icon} x={0} y={0} size={r * 1.2} shadow={false} /> : <Txt x={0} y={8} size={r} color={C.white} font="display">{i + 1}</Txt>}
+                <Txt x={0} y={r + 56} size={fit(itemText(t), 36, gap - 14)} font="display" color={ink}>
                   {itemText(t)}
                 </Txt>
               </Popper>
@@ -628,7 +654,7 @@ const BeatView: React.FC<{ beat: Beat; f: number; len: number; dark: boolean }> 
             return (
               <Popper key={i} f={f} at={spread(i, n, len)} x={xs[i]} y={430}>
                 {icon && <Icon name={icon} x={0} y={-130} size={150} float seed={i} />}
-                <Chip text={itemText(t)} fill={light(CYCLE[i % 5], C.white)} size={42} />
+                <Chip text={itemText(t)} fill={light(CYCLE[i % 5], C.white)} size={42} maxW={gap - 16} />
               </Popper>
             );
           })}
@@ -740,11 +766,11 @@ const TitleStage: React.FC<{ beat: Extract<Beat, { type: "title" }>; f: number; 
       )}
       {beat.icon && <Icon name={beat.icon} x={W / 2 + 260} y={250} size={170} float rotate={12} />}
       <g transform={`translate(0 ${(1 - t) * 60})`} opacity={t}>
-        <Txt x={W / 2} y={beat.n !== undefined ? 620 : 470} size={124} font="display" color={C.white}>
+        <Txt x={W / 2} y={beat.n !== undefined ? 620 : 470} size={fit(beat.title, 124, 1740)} font="display" color={C.white}>
           {beat.title}
         </Txt>
         {beat.sub && (
-          <Txt x={W / 2} y={beat.n !== undefined ? 730 : 580} size={56} font="bold" color={C.gold}>
+          <Txt x={W / 2} y={beat.n !== undefined ? 730 : 580} size={fit(beat.sub, 56, 1600, "bold")} font="bold" color={C.gold}>
             {beat.sub}
           </Txt>
         )}
@@ -798,14 +824,37 @@ const itemCount = (b: Beat) =>
 
 const DEFAULT_SETS: SetName[] = ["room", "office", "street", "board", "park", "kitchen", "bank"];
 
+/** Who a line belongs to, for lip sync and where Stick looks. */
+type Speaker = "stick" | CastName;
+
+/** Stick's position over the scene: lines with "x" make him walk there at the start of the line. */
+const positionAt = (f: number, moves: { at: number; x: number }[], start: number) => {
+  let x = start;
+  let walkingNow = false;
+  for (const m of moves) {
+    if (f < m.at) break;
+    const dist = Math.abs(m.x - x);
+    const dur = Math.max(12, Math.round(dist / 9)); // about 270 px a second
+    const t = ease(f, m.at, dur, (q) => q);
+    if (t < 1) {
+      walkingNow = true;
+      return { x: lerp(x, m.x, easeWalk(t)), walking: walkingNow, dir: Math.sign(m.x - x) };
+    }
+    x = m.x;
+  }
+  return { x, walking: false, dir: 0 };
+};
+const easeWalk = (t: number) => t * t * (3 - 2 * t);
+
 /** A scene built entirely from script.json. */
-export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: SceneTiming; voice: string; duration: number; endCard?: number }> = ({
+export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: SceneTiming; voice: string; duration: number; endCard?: number; background?: string }> = ({
   scene,
   index = 0,
   timing,
   voice,
   duration,
   endCard = 0,
+  background,
 }) => {
   const f = useCurrentFrame();
   const L: Record<string, Line> = Object.fromEntries(timing.lines.map((l) => [l.key, l]));
@@ -813,13 +862,20 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
   const beats = steps.filter((s) => s.sl.beat);
   const set = scene.set ?? DEFAULT_SETS[index % DEFAULT_SETS.length];
   const dark = DARK_SETS.includes(set);
-  const stickX = scene.stickX ?? 330;
+  const homeX = scene.stickX ?? 330;
   const ink = dark ? C.white : C.ink;
 
-  // Stick's poses
+  // which line is playing, who is saying it, and the lip-sync shape for this frame
+  const current = steps.filter((s) => f >= s.line.start).pop();
+  const speakingLine = steps.find((s) => f >= s.line.start && f < s.line.end);
+  const speaker: Speaker = (speakingLine?.sl.speaker as Speaker) ?? "stick";
+  const shape = timing.mouth?.[f];
+  const mouthFor = (who: Speaker) => (speakingLine && speaker === who ? (shape ?? undefined) : "X");
+
+  // Stick's poses, then any acting on top
   const keys: PoseKey[] = [[0, "stand"]];
   for (const { sl, line } of steps) {
-    const p = sl.pose ?? (sl.beat ? BEAT_POSE[sl.beat.type] : undefined);
+    const p = sl.pose ?? (sl.act ? ACT_POSE[sl.act] : undefined) ?? (sl.beat ? BEAT_POSE[sl.beat.type] : undefined);
     if (p === "wave") keys.push([line.start, "stand"]);
     else if (p) {
       if (!(p in POSES)) throw new Error(`line "${sl.key}": unknown pose "${p}" - one of: wave, ${Object.keys(POSES).join(", ")}`);
@@ -827,31 +883,86 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
     }
   }
   let pose = poseAt(f, keys);
-  const current = steps.filter((s) => f >= s.line.start).pop();
   if (current?.sl.pose === "wave") pose = waving(pose, f);
-  const expr = current?.sl.expr ?? "smile";
-  const emoteLine = steps.filter((s) => s.sl.emote && f >= s.line.start && f < s.line.end + 20).pop();
-  const holding = steps.filter((s) => f >= s.line.start && s.sl.holding !== undefined).pop()?.sl.holding;
+  const expr = current?.sl.expr ?? (current?.sl.act ? ACT_EXPR[current.sl.act] : undefined) ?? "smile";
+  const emoteLine = steps.filter((s) => (s.sl.emote || (s.sl.act && ACT_EMOTE[s.sl.act])) && f >= s.line.start && f < s.line.end + 20).pop();
+  const emote = emoteLine ? (emoteLine.sl.emote ?? ACT_EMOTE[emoteLine.sl.act!]) : undefined;
+
+  // staging: walking between marks, entering and leaving
+  const moves = steps.filter((s) => s.sl.x !== undefined || s.sl.act === "enter" || s.sl.act === "exit").map((s) => ({ at: s.line.start, x: s.sl.act === "exit" ? 2150 : (s.sl.x ?? homeX) }));
+  const entersFirst = steps[0]?.sl.act === "enter";
+  const pos = positionAt(f, moves, entersFirst ? -250 : homeX);
+  if (pos.walking) pose = walking(pose, f * 0.34);
+
+  // acting
+  let y = GROUND;
+  let rotate = 0;
+  let sx = pos.x;
+  const act = current?.sl.act;
+  const actT = current ? f - current.line.start : 0;
+  if (act === "jump") y -= Math.abs(Math.sin(Math.min(actT, 60) * 0.18)) * 90 * (actT < 60 ? 1 : 0);
+  if (act === "panic") sx += Math.sin(f * 1.7) * 6;
+  if (act === "fall" || act === "sleep") {
+    // tip over toward the middle of the stage, so the whole body stays in frame
+    rotate = 86 * ease(f, current!.line.start, 12);
+    y = GROUND - 40 * ease(f, current!.line.start, 12);
+  }
+  if (act === "shiver") sx += Math.sin(f * 2.3) * 3;
+
+  // objects changing hands: "give" makes the receiver hold it once it lands
+  const holdingKey = steps.filter((s) => f >= s.line.start && s.sl.holding !== undefined).pop();
+  let holding = holdingKey?.sl.holding;
+  const gives = steps.filter((s) => s.sl.give);
+  for (const g of gives) if (g.sl.give!.to === "stick" && f >= g.line.start + 22 && (!holdingKey || holdingKey.line.start <= g.line.start)) holding = g.sl.give!.icon;
+  for (const g of gives) if (g.sl.give!.from === "stick" && f >= g.line.start && (!holdingKey || holdingKey.line.start <= g.line.start)) holding = undefined;
+
+  // the supporting cast
+  const castBeat = beats.filter((b) => b.sl.beat!.type === "cast" && f >= b.line.start).pop();
+  const castDef = castBeat ? (castBeat.sl.beat as Extract<Beat, { type: "cast" }>) : null;
+  const castLeave =
+    castBeat && castDef
+      ? beats.find((b) => b.line.start > castBeat.line.start && (b.sl.beat!.type === "clear" || (!castDef.stay && b.sl.beat!.type !== "cast")))?.line.start
+      : undefined;
+  const castX0 = castDef?.x ?? 1590;
+  let castX = castX0;
+  let castWalking = false;
+  if (castBeat && castDef) {
+    if (castDef.enter !== false) {
+      const t = ease(f, castBeat.line.start, 26, (q) => q);
+      castX = lerp(2150, castX0, easeWalk(t));
+      castWalking = t < 1;
+    }
+    if (castLeave !== undefined && f >= castLeave - 4) {
+      const t = ease(f, castLeave - 4, 26, (q) => q);
+      castX = lerp(castX0, 2150, easeWalk(t));
+      castWalking = t < 1;
+    }
+  }
+  const castGone = castLeave !== undefined && f > castLeave + 24;
+  const onEndCard = endCard > 0 && f >= duration - endCard;
 
   // camera: frame each line, returning to wide for the end card
   const FRAMES: Record<CameraMode, { zoom: number; x: number; y: number }> = {
     wide: { zoom: 1, x: W / 2, y: H / 2 },
-    stick: { zoom: 1.3, x: stickX + 300, y: GROUND - 300 },
+    stick: { zoom: 1.3, x: homeX + 300, y: GROUND - 300 },
     content: { zoom: 1.1, x: 1075, y: 500 },
-    close: { zoom: 1.55, x: stickX + 160, y: GROUND - 330 },
+    close: { zoom: 1.55, x: homeX + 160, y: GROUND - 330 },
   };
   const camera: CamKey[] = [[0, FRAMES.wide]];
   let active: Beat | undefined;
   for (const { sl, line } of steps) {
     if (sl.beat && sl.beat.type !== "cast") active = sl.beat.type === "clear" ? undefined : sl.beat;
-    let mode = sl.camera ?? (sl.beat ? BEAT_CAMERA[sl.beat.type] : active ? BEAT_CAMERA[active.type] : "stick");
-    // never crop a beat that is on screen: tight Stick shots only when the stage is empty
-    if (active && (mode === "stick" || mode === "close")) mode = "content";
+    let mode = sl.camera ?? (sl.beat ? BEAT_CAMERA[sl.beat.type] : active ? BEAT_CAMERA[active.type] : sl.speaker || sl.act || sl.x !== undefined ? "wide" : "stick");
+    // never crop a beat or a moving character: tight shots only on a still, empty stage
+    if ((active || sl.x !== undefined || sl.act) && (mode === "stick" || mode === "close")) mode = active ? "content" : "wide";
     camera.push([Math.max(0, line.start - 8), FRAMES[mode], 28]);
   }
   if (endCard > 0) camera.push([duration - endCard, FRAMES.wide, 20]);
 
-  const shake = beats.filter((b) => b.sl.beat!.type === "stamp").map((b) => b.line.start + 4);
+  const shake = [
+    ...beats.filter((b) => b.sl.beat!.type === "stamp").map((b) => b.line.start + 4),
+    ...steps.filter((s) => s.sl.act === "fall").map((s) => s.line.start + 12),
+  ];
 
   const sfx: Cue[] = beats.flatMap(({ sl, line }) => {
     const b = sl.beat!;
@@ -864,17 +975,16 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
     if (b.type === "bars" || b.type === "counter" || b.type === "chart") base.push([line.start + Math.round(len * 0.75), "ding", 0.35]);
     return base;
   });
-  for (const { sl, line } of steps) if (sl.burst) sfx.push([line.start + 2, sl.burst === "coins" ? "ding" : "pop", 0.35]);
+  for (const { sl, line } of steps) {
+    if (sl.burst) sfx.push([line.start + 2, sl.burst === "coins" ? "ding" : "pop", 0.35]);
+    if (sl.act === "jump") sfx.push([line.start + 2, "whoosh", 0.3]);
+    if (sl.act === "fall") sfx.push([line.start + 12, "thud", 0.6]);
+    if (sl.give) sfx.push([line.start + 2, "whoosh", 0.3], [line.start + 22, "pop", 0.35]);
+    if (sl.coins) for (let i = 0; i < 4; i++) sfx.push([line.start + 18 + i * 6, "pop", 0.22]);
+  }
 
-  const castBeat = beats.filter((b) => b.sl.beat!.type === "cast" && f >= b.line.start).pop();
-  const castDef = castBeat ? (castBeat.sl.beat as Extract<Beat, { type: "cast" }>) : null;
-  // a cast member leaves when the next beat arrives, unless "stay": true (then until "clear")
-  const castCleared =
-    castBeat &&
-    castDef &&
-    beats.some((b) => b.line.start > castBeat.line.start && f >= b.line.start - 4 && (b.sl.beat!.type === "clear" || (!castDef.stay && b.sl.beat!.type !== "cast")));
   const titleBeat = beats.find((b) => b.sl.beat!.type === "title");
-  const onEndCard = endCard > 0 && f >= duration - endCard;
+  const placeOf = (who: string | number) => (typeof who === "number" ? who : who === "stick" ? sx + 60 : castX - 60);
 
   return (
     <Scene
@@ -885,6 +995,7 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
       set={set}
       camera={camera}
       shake={shake}
+      background={background}
       overlay={titleBeat ? <TitleStage beat={titleBeat.sl.beat as Extract<Beat, { type: "title" }>} f={f} end={titleBeat.line.end + 14} /> : undefined}
     >
       {beats.map(({ sl, line }, i) => {
@@ -908,22 +1019,44 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
 
       {steps.map(({ sl, line }) => (sl.burst ? <Burst key={sl.key} at={line.start + 4} x={CX} y={420} kind={sl.burst} /> : null))}
 
-      {castDef && castBeat && !castCleared && !onEndCard && (
-        <g opacity={ease(f, castBeat.line.start, 10)}>
+      {/* things flying between characters */}
+      {gives.map(({ sl, line }) => {
+        const t = ease(f, line.start + 2, 20, (q) => q);
+        if (t <= 0 || t >= 1) return null;
+        const g = sl.give!;
+        const x0 = placeOf(g.from);
+        const x1 = placeOf(g.to);
+        return <Icon key={sl.key} name={g.icon} x={lerp(x0, x1, t)} y={GROUND - 300 - Math.sin(Math.PI * t) * 180} size={110} rotate={t * 360} shadow={false} />;
+      })}
+      {steps.map(({ sl, line }) => {
+        if (!sl.coins) return null;
+        const x0 = placeOf(sl.coins.from);
+        const x1 = placeOf(sl.coins.to);
+        return [0, 1, 2, 3].map((k) => {
+          const t = ease(f, line.start + k * 6, 18, (q) => q);
+          if (t <= 0 || t >= 1) return null;
+          return <Icon key={`${sl.key}-${k}`} name="coin" x={lerp(x0, x1, t)} y={GROUND - 280 - Math.sin(Math.PI * t) * 160} size={64} rotate={t * 540} shadow={false} />;
+        });
+      })}
+
+      {castDef && castBeat && !castGone && !onEndCard && (
+        <g>
           <Stick
-            x={1590}
+            x={castX}
             y={GROUND}
             scale={1.55}
             color={CAST[castDef.who].color}
             accessory={CAST[castDef.who].accessory}
             seed={CAST[castDef.who].seed}
-            pose={poseAt(f, [[0, castDef.pose ?? "stand"]])}
+            pose={castWalking ? walking(POSES.stand as Pose, f * 0.34) : poseAt(f, [[0, castDef.pose ?? "stand"]])}
             expr={castDef.expr ?? "smug"}
             emote={castDef.emote}
+            look={speaker === "stick" ? -1 : 0}
+            viseme={mouthFor(castDef.who)}
           />
-          {castDef.label && (
-            <g transform={`translate(1560 ${GROUND - 520})`}>
-              <Chip text={castDef.label} font="display" size={40} fill={light(CAST[castDef.who].tag, C.white)} />
+          {castDef.label && !castWalking && (
+            <g transform={`translate(${castX - 30} ${GROUND - 520})`}>
+              <Chip text={castDef.label} font="display" size={40} fill={light(CAST[castDef.who].tag, C.white)} maxW={420} />
             </g>
           )}
         </g>
@@ -931,16 +1064,19 @@ export const AutoScene: React.FC<{ scene: ScriptScene; index?: number; timing: S
 
       {onEndCard && <EndCard f={f - (duration - endCard)} dark={dark} />}
       <Stick
-        x={endCard > 0 ? lerp(stickX, 300, ease(f, duration - endCard, 25)) : stickX}
-        y={GROUND}
+        x={endCard > 0 ? lerp(sx, 300, ease(f, duration - endCard, 25)) : sx}
+        y={y}
+        rotate={rotate}
         scale={1.6}
         color={ink}
         pose={onEndCard ? waving(pose, f) : pose}
-        expr={onEndCard ? "grin" : expr}
-        emote={onEndCard ? undefined : emoteLine?.sl.emote}
+        expr={onEndCard ? "grin" : act === "sleep" ? "sleep" : expr}
+        emote={onEndCard ? undefined : emote}
         holding={onEndCard ? undefined : holding || undefined}
-        talking={speaking(f, L)}
+        look={castDef && !castGone && speaker !== "stick" ? 1 : pos.dir}
+        viseme={onEndCard ? undefined : act === "sleep" ? undefined : mouthFor("stick")}
       />
+      {act === "sleep" && <Zzz x={sx + 40} y={GROUND - 120} />}
     </Scene>
   );
 };

@@ -32,6 +32,9 @@ import numpy as np
 FPS = 30
 TOOLS = Path(__file__).resolve().parent
 
+# default voice for each supporting character; override per video in video.json "voice" -> "cast"
+CAST_VOICES = {"larry": "am_adam", "boss": "bm_george", "shady": "am_puck", "friend": "af_heart"}
+
 LEAD_IN = 0.6      # silence before the first line of a scene
 TITLE_HOLD = 1.4   # extra beat after a line keyed "title", so a title card can land
 LINE_GAP = 0.6     # breath between lines
@@ -73,6 +76,53 @@ def synth_kokoro(text, voice, speed):
     samples, rate = _kokoro.create(text, voice=voice, speed=speed, lang="en-us")
     pcm = (np.clip(samples, -1, 1) * 32767).astype(np.int16)
     return trim(pcm, rate), rate
+
+
+# Mouth shapes, one letter per video frame (Preston Blair style, simplified):
+#   X rest   A pressed lips (m/b/p, short gaps)   B teeth (s, t, sh, most consonants)
+#   C open   D wide open (loud vowels)   E round (o)   F puckered (oo, w)
+def visemes(pcm, rate, frames):
+    x = pcm.astype(np.float32) / 32768
+    hop = rate / FPS
+    win = int(rate * 0.04)
+    window = np.hanning(win)
+    freqs = np.fft.rfftfreq(win, 1 / rate)
+    lo_band = (freqs > 80) & (freqs < 1000)
+    rows = []
+    for k in range(frames):
+        i = int(k * hop)
+        s = x[i:i + win]
+        if len(s) < win:
+            s = np.pad(s, (0, win - len(s)))
+        s = s * window
+        e = np.sqrt(np.mean(s ** 2)) + 1e-9
+        sp = np.abs(np.fft.rfft(s))
+        total = sp.sum() + 1e-9
+        rows.append((20 * np.log10(e), (sp * freqs).sum() / total, np.mean(np.abs(np.diff(np.sign(s)))) / 2, sp[lo_band].sum() / total))
+    if not rows:
+        return ""
+    f = np.array(rows)
+    db = f[:, 0] - f[:, 0].max()
+    out = []
+    for (d, (_, cen, zcr, low)) in zip(db, f):
+        if d < -32:
+            out.append("X")
+        elif zcr > 0.25 or cen > 4200:
+            out.append("B")
+        elif low > 0.7 and cen < 1100:
+            out.append("E" if d > -17 else "F")
+        elif d > -9:
+            out.append("D")
+        elif d > -17:
+            out.append("C")
+        else:
+            out.append("B")
+    # short silences inside speech read as closed lips (m, b, p), not as a resting mouth
+    s = "".join(out)
+    s = re.sub(r"(?<=[A-F])X{1,3}(?=[A-F])", lambda m: "A" * len(m.group()), s)
+    # no single-frame flicker: a lone frame takes its left neighbour's shape
+    s = re.sub(r"(?<=(.))(?!\1)(.)(?=\1)", lambda m: m.group(1), s)
+    return s
 
 
 def write_mp3(path, pcm, rate):
@@ -125,17 +175,22 @@ def main():
     engine = voice.get("engine", "kokoro")
     model = args.model or str(TOOLS / ".models" / f"{voice.get('model', 'en_US-norman-medium')}.onnx")
     length_scale = args.length_scale or voice.get("lengthScale", 0.95)
+    # dialogue: a line with "speaker" is voiced by that character (video.json "voice" -> "cast")
+    cast_voices = {**CAST_VOICES, **voice.get("cast", {})}
+    def voice_of(speaker):
+        return voice.get("voice", "am_michael") if speaker in (None, "stick") else cast_voices.get(speaker, voice.get("voice", "am_michael"))
+
     if engine == "kokoro":
-        say = lambda text: synth_kokoro(text, voice.get("voice", "am_michael"), voice.get("speed", 1.0))
+        say = lambda job: synth_kokoro(job[0], voice_of(job[1]), voice.get("speed", 1.0))
     else:
-        say = lambda text: synth(args.piper, model, text, length_scale)
+        say = lambda job: synth(args.piper, model, job[0], length_scale)
     script = json.loads((video / "script.json").read_text())
     shorts = meta.get("shorts", [])
     timing_path = video / "src" / "timing.json"
 
-    texts = [s["hook"] for s in shorts]
+    texts = [(s["hook"], None) for s in shorts]
     if not args.shorts_only:
-        texts += [line["text"] for scene in script["scenes"] for line in scene["lines"]]
+        texts += [(line["text"], line.get("speaker")) for scene in script["scenes"] for line in scene["lines"]]
     if engine == "kokoro":
         # one model in memory; it already uses every core
         voiced = {t: say(t) for t in dict.fromkeys(texts)}
@@ -151,7 +206,7 @@ def main():
         for scene in script["scenes"]:
             chunks, lines, t, rate = [], [], LEAD_IN, 22050
             for i, line in enumerate(scene["lines"]):
-                pcm, rate = voiced[line["text"]]
+                pcm, rate = voiced[(line["text"], line.get("speaker"))]
                 if i == 0:
                     chunks.append(np.zeros(int(LEAD_IN * rate), dtype=np.int16))
                 dur = len(pcm) / rate
@@ -167,7 +222,7 @@ def main():
             audio = np.concatenate(chunks)
             write_mp3(video / "audio" / "vo" / f"{scene['id']}.mp3", audio, rate)
             frames = int(np.ceil(len(audio) / rate * FPS))
-            timing["scenes"].append({"id": scene["id"], "chapter": scene["chapter"],
+            timing["scenes"].append({"id": scene["id"], "chapter": scene["chapter"], "mouth": visemes(audio, rate, frames),
                                      "durationInFrames": frames, "lines": lines})
             clock += frames / FPS
             print(f"{scene['id']:10} {frames / FPS:6.1f}s")
@@ -177,10 +232,11 @@ def main():
 
     timing["shorts"] = {}
     for s in shorts:
-        pcm, rate = voiced[s["hook"]]
+        pcm, rate = voiced[(s["hook"], None)]
         pcm = np.concatenate([pcm, np.zeros(int(0.35 * rate), dtype=np.int16)])
         write_mp3(video / "audio" / "shorts" / f"{s['slug']}.mp3", pcm, rate)
-        timing["shorts"][s["slug"]] = {"text": s["hook"], "durationInFrames": int(np.ceil(len(pcm) / rate * FPS))}
+        hf = int(np.ceil(len(pcm) / rate * FPS))
+        timing["shorts"][s["slug"]] = {"text": s["hook"], "durationInFrames": hf, "mouth": visemes(pcm, rate, hf)}
         print(f"short {s['n']}  {s['slug']:24} hook {len(pcm) / rate:4.1f}s")
 
     timing_path.write_text(json.dumps(timing, indent=1))

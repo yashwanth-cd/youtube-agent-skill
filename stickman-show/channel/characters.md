@@ -12,7 +12,10 @@ The engine draws all of this (`src/engine/`). This file is the bible: keep new v
 | **The shady guy** | grey, sunglasses and hat | get-rich-quick seller; "if it promises fast and guaranteed, run" | `"who":"shady"` |
 | **The friend** | green, cap | a neutral second voice, someone to explain things to | `"who":"friend"` |
 
-Stick speaks; the others don't (one narrator voice keeps the channel recognisable).
+Stick narrates. The others speak only their own lines in a story (a line with `"speaker"`), each
+in a fixed voice so viewers recognise them: Larry `am_adam`, the boss `bm_george`, the shady guy
+`am_puck`, the friend `af_heart` (Kokoro, Apache-2.0). Change them per video in `video.json` →
+`voice.cast`.
 
 ## Look
 

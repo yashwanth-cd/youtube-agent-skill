@@ -45,3 +45,11 @@ export const shakeAt = (f: number, at: number[]): [number, number] => {
   }
   return [x, y];
 };
+
+/** The same transform as camTransform, as CSS (for HTML layers such as a painted background). */
+export const camCss = (c: Cam, depth = 1, shake: [number, number] = [0, 0]) => {
+  const z = 1 + (c.zoom - 1) * depth;
+  const x = W / 2 + (c.x - W / 2) * depth;
+  const y = H / 2 + (c.y - H / 2) * depth;
+  return `translate(${W / 2 + shake[0]}px, ${H / 2 + shake[1]}px) scale(${z}) translate(${-x}px, ${-y}px)`;
+};

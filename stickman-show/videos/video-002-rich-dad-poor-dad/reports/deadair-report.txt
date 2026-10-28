@@ -1,0 +1,64 @@
+
+  captions/narration.srt   426.93s in, 59 cues, dead-air floor 0.45s
+
+    DEAD        2.48 ->     2.63    0.15s   0.60s gap
+    DEAD        6.41 ->     6.56    0.15s   0.60s gap
+    DEAD       11.16 ->    11.31    0.15s   0.60s gap
+    DEAD       20.56 ->    21.94    1.38s   1.83s gap
+    DEAD       23.68 ->    25.23    1.55s   2.00s gap
+    DEAD       34.10 ->    34.25    0.15s   0.60s gap
+    DEAD       37.59 ->    37.74    0.15s   0.60s gap
+    DEAD       44.51 ->    44.66    0.15s   0.60s gap
+    DEAD       48.02 ->    48.16    0.15s   0.60s gap
+    DEAD       51.70 ->    51.85    0.15s   0.60s gap
+    DEAD       53.38 ->    53.53    0.15s   0.60s gap
+    DEAD       56.14 ->    56.29    0.15s   0.60s gap
+    DEAD       58.23 ->    58.38    0.15s   0.60s gap
+    DEAD       62.47 ->    62.62    0.15s   0.60s gap
+    DEAD       70.91 ->    72.28    1.36s   1.81s gap
+    DEAD       75.29 ->    76.84    1.55s   2.00s gap
+    DEAD       79.49 ->    79.64    0.15s   0.60s gap
+    DEAD       90.23 ->    90.38    0.15s   0.60s gap
+    DEAD       97.19 ->    97.33    0.15s   0.60s gap
+    DEAD      108.68 ->   108.83    0.15s   0.60s gap
+    DEAD      113.45 ->   114.81    1.35s   1.80s gap
+    DEAD      119.42 ->   120.97    1.55s   2.00s gap
+    DEAD      129.48 ->   129.63    0.15s   0.60s gap
+    DEAD      140.30 ->   140.45    0.15s   0.60s gap
+    DEAD      146.87 ->   147.02    0.15s   0.60s gap
+    DEAD      153.86 ->   154.01    0.15s   0.60s gap
+    DEAD      163.11 ->   163.26    0.15s   0.60s gap
+    DEAD      169.38 ->   169.53    0.15s   0.60s gap
+    DEAD      175.42 ->   176.78    1.36s   1.81s gap
+    DEAD      179.63 ->   181.19    1.55s   2.00s gap
+    DEAD      186.88 ->   187.03    0.15s   0.60s gap
+    DEAD      197.25 ->   197.40    0.15s   0.60s gap
+    DEAD      206.50 ->   206.65    0.15s   0.60s gap
+    DEAD      212.43 ->   213.81    1.37s   1.82s gap
+    DEAD      217.87 ->   219.41    1.55s   2.00s gap
+    DEAD      223.51 ->   223.66    0.15s   0.60s gap
+    DEAD      231.24 ->   231.39    0.15s   0.60s gap
+    DEAD      243.03 ->   243.18    0.15s   0.60s gap
+    DEAD      256.12 ->   257.48    1.35s   1.80s gap
+    DEAD      260.27 ->   261.82    1.55s   2.00s gap
+    DEAD      269.59 ->   269.74    0.15s   0.60s gap
+    DEAD      279.76 ->   279.91    0.15s   0.60s gap
+    DEAD      289.93 ->   290.08    0.15s   0.60s gap
+    DEAD      296.97 ->   298.34    1.37s   1.82s gap
+    DEAD      301.74 ->   303.29    1.55s   2.00s gap
+    DEAD      307.50 ->   307.65    0.15s   0.60s gap
+    DEAD      316.84 ->   316.99    0.15s   0.60s gap
+    DEAD      322.83 ->   322.98    0.15s   0.60s gap
+    DEAD      330.48 ->   331.84    1.36s   1.81s gap
+    DEAD      335.21 ->   336.76    1.55s   2.00s gap
+    DEAD      347.32 ->   347.47    0.15s   0.60s gap
+    DEAD      361.62 ->   361.77    0.15s   0.60s gap
+    DEAD      372.94 ->   373.09    0.15s   0.60s gap
+    DEAD      382.26 ->   382.41    0.15s   0.60s gap
+    DEAD      393.93 ->   395.27    1.35s   1.80s gap
+    DEAD      402.48 ->   402.63    0.15s   0.60s gap
+    DEAD      414.08 ->   414.23    0.15s   0.60s gap
+    DEAD      424.98 ->   425.13    0.15s   0.60s gap
+
+  58 cuts, 30.80s removed, 396.13s out (7.2% shorter)
+

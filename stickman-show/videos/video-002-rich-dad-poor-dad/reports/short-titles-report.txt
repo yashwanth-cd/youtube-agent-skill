@@ -1,0 +1,24 @@
+
+  "5 Words That Change How You See Money"
+  37 chars   score 100/100
+    ok              37 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (5)
+
+  "Your Car Fails This 1-Line Money Test"
+  37 chars   score 100/100
+    ok              37 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (1)
+
+  "Is Your House an Asset? 32M Copies Say No"
+  41 chars   score 98/100
+    x  mobile       a mobile feed shows about "Is Your House an Asset? 32M Copies Say..." - check the subject survives
+    ok              41 characters, inside the 60-character desktop cut
+    ok              1 all-caps word for emphasis
+    ok              carries a concrete figure (32)
+
+  "Got a Raise, Still Broke? 1 Picture Explains"
+  44 chars   score 94/100
+    x  mobile       a mobile feed shows about "Got a Raise, Still Broke? 1 Picture..." - check the subject survives
+    ok              44 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (1)
+

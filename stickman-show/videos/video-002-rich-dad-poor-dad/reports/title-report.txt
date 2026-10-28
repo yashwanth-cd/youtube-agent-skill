@@ -1,0 +1,94 @@
+
+  "32 Million Copies Later: Is Rich Dad Poor Dad Right?"
+  52 chars   score 98/100
+    x  mobile       a mobile feed shows about "32 Million Copies Later: Is Rich Dad..." - check the subject survives
+    ok              52 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (32)
+    ok              open question in the title
+
+  "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes"
+  49 chars   score 94/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Summary: 6 Lessons in..." - check the subject survives
+    ok              49 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6, 7)
+
+  "Rich Dad Poor Dad in 7 Minutes (Animated Summary)"
+  49 chars   score 94/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad in 7 Minutes..." - check the subject survives
+    ok              49 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (7)
+
+  "The 6 Lessons of Rich Dad Poor Dad, Honestly Reviewed"
+  53 chars   score 94/100
+    x  mobile       a mobile feed shows about "The 6 Lessons of Rich Dad Poor Dad,..." - check the subject survives
+    ok              53 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6)
+
+  "Rich Dad Poor Dad Summary: Keep 6 Ideas, Skip 3"
+  47 chars   score 94/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Summary: Keep 6..." - check the subject survives
+    ok              47 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6, 3)
+
+  "Why Rich Dad Poor Dad Is Half Right"
+  35 chars   score 90/100
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              35 characters, inside the 60-character desktop cut
+
+  "Rich Dad Poor Dad: What It Gets Right (and Wrong)"
+  49 chars   score 76/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad: What It Gets Right..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              49 characters, inside the 60-character desktop cut
+
+  "Rich Dad Poor Dad Explained by a Stick Figure"
+  45 chars   score 76/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Explained by a Stick..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              45 characters, inside the 60-character desktop cut
+
+  "Is Your House an Asset? Rich Dad Poor Dad Explained"
+  51 chars   score 76/100
+    x  mobile       a mobile feed shows about "Is Your House an Asset? Rich Dad Poor..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              51 characters, inside the 60-character desktop cut
+
+  "Rich Dad Poor Dad Animated Summary and Honest Review"
+  52 chars   score 76/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Animated Summary and..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              52 characters, inside the 60-character desktop cut
+
+
+  "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes"
+  49 chars   score 98/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Summary: 6 Lessons in..." - check the subject survives
+    ok              49 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6, 7)
+    ok              thumbnail and title carry different words
+
+
+  "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes"
+  49 chars   score 98/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Summary: 6 Lessons in..." - check the subject survives
+    ok              49 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6, 7)
+    ok              thumbnail and title carry different words
+
+
+  "32 Million Copies Later: Is Rich Dad Poor Dad Right?"
+  52 chars   score 100/100
+    x  mobile       a mobile feed shows about "32 Million Copies Later: Is Rich Dad..." - check the subject survives
+    ok              52 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (32)
+    ok              open question in the title
+    ok              thumbnail and title carry different words
+
+
+  "Rich Dad Poor Dad Summary: Keep 6 Ideas, Skip 3"
+  47 chars   score 98/100
+    x  mobile       a mobile feed shows about "Rich Dad Poor Dad Summary: Keep 6..." - check the subject survives
+    ok              47 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6, 3)
+    ok              thumbnail and title carry different words
+

@@ -93,6 +93,22 @@ npm run make    -- video-002 --skip-voice             # long video + thumbnail +
 - **Shorts come from the long video.** Each Short is a new spoken hook over a frozen frame, then
   the span, framed vertically with big captions. Define them in `video.json`; `make` renders them.
 
+## Painted backgrounds with WanGP (optional, on a GPU PC)
+
+[WanGP](https://github.com/yashwanth-cd/WanGP) runs open image, video and audio models on a
+consumer GPU. The pipeline uses it for the one thing generative models do better than drawn
+shapes: rich, painted environments. Characters, lip sync and infographics stay in the engine, so
+Stick looks the same in every shot.
+
+1. Give scenes a `bg` prompt in `script.json` (a place: no people, no text).
+2. On the GPU machine, with WanGP's Python:
+   `python tools/wangp_assets.py videos/video-002-rich-dad-poor-dad --wangp C:/WanGP`
+3. Commit `videos/<folder>/assets/` and `src/assets.ts`, then render as usual.
+
+It uses Qwen-Image 20B (Apache-2.0). Check any other model's licence before switching, because
+some popular ones are non-commercial. Scenes without a painting keep the drawn set. This uses
+WanGP, whose terms ask integrations to say so.
+
 ## Storage
 
 Finished videos, thumbnails, Shorts and narration are committed as normal git files. Git LFS

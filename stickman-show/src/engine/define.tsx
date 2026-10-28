@@ -14,7 +14,7 @@ export const defineVideo = (input: VideoInput): VideoEntry => {
     if (!s) throw new Error(`${input.id}: scene "${t.id}" has no component and is not in script.json`);
     const voice = input.voices?.[t.id] ?? "";
     const duration = t.durationInFrames + (i === last ? input.endCard : 0);
-    const Auto: React.FC = () => <AutoScene scene={s} index={i} timing={t} voice={voice} duration={duration} endCard={i === last ? input.endCard : 0} />;
+    const Auto: React.FC = () => <AutoScene scene={s} index={i} timing={t} voice={voice} duration={duration} endCard={i === last ? input.endCard : 0} background={input.backgrounds?.[t.id]} />;
     scenes[t.id] = Auto;
   });
   const video = { ...input, scenes };

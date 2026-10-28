@@ -1,0 +1,69 @@
+
+  You might lose money following Rich Dad Poor Dad. 32 million copies sold, but almost nobody tells you which lessons actually work.
+  ------------------------------------------------------------------------
+    SPECIFICITY   69  #############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY    100  ####################
+    BREVITY      100  ####################
+    VERDICT       76  STRONG
+    formula      Contrarian Flip  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Your house is not an asset? 32 million readers believed it. But which of the book's 6 lessons actually work, and which could leave you broke?
+  ------------------------------------------------------------------------
+    SPECIFICITY   79  ###############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY    100  ####################
+    BREVITY       86  #################
+    VERDICT       76  STRONG
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  You've read the headlines from Rich Dad Poor Dad. 32 million copies later, almost nobody asks which lessons actually work, and which ones cost you.
+  ------------------------------------------------------------------------
+    SPECIFICITY   69  #############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY    100  ####################
+    BREVITY       93  ##################
+    VERDICT       75  STRONG
+    formula      Unclassified  (no formula matched - that is usually a summary, not a hook)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Your house is not an asset? That's from a book with 32 million copies sold. But which of its 6 lessons actually work, and which could leave you broke?
+  ------------------------------------------------------------------------
+    SPECIFICITY   85  #################
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY    100  ####################
+    BREVITY       65  #############
+    VERDICT       74  STRONG
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Your house is not an asset, says a book with 32 million copies sold. But which half of it is right, and which half could leave you broke?
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     93  ##################
+    BREVITY       72  ##############
+    VERDICT       71  WORKABLE
+    formula      The Question  (1 pattern matched)
+    weakest      SPECIFICITY - swap one adjective for a number, a name or a date
+
+  Your house is not an asset. That's what a book with 32 million copies sold says, but it's only half right, and the wrong half could cost you.
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     58  ###########
+    BREVITY       72  ##############
+    VERDICT       65  WORKABLE
+    formula      Unclassified  (no formula matched - that is usually a summary, not a hook)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  winner: You might lose money following Rich Dad Poor Dad. 32 million copies sold, but almost nobody tells you which lessons actually work.  (76, STRONG)
+

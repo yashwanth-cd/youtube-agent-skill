@@ -97,6 +97,8 @@ type Props = {
   pose?: Pose;
   expr?: Expr;
   talking?: boolean;
+  /** Lip-sync shape for this frame (from timing.json "mouth"): X A B C D E F. Overrides `talking`. */
+  viseme?: string;
   color?: string;
   look?: number;
   seed?: number;
@@ -149,6 +151,7 @@ export const Stick: React.FC<Props> = ({
   pose = POSES.stand as Pose,
   expr = "smile",
   talking = false,
+  viseme,
   color = C.ink,
   look = 0,
   seed = 1,
@@ -192,6 +195,40 @@ export const Stick: React.FC<Props> = ({
 
   const faceStroke = { ...stroke, stroke: face };
   const mouth = () => {
+    if (viseme && viseme !== "X") {
+      const tongue = "#E86A6A";
+      switch (viseme) {
+        case "A": // pressed lips: m, b, p
+          return <path d={`M ${ex - 10} 11 Q ${ex} 13 ${ex + 10} 11`} {...faceStroke} strokeWidth={4.5} />;
+        case "B": // teeth together: s, t, sh
+          return (
+            <g>
+              <rect x={ex - 10} y={7} width={20} height={9} rx={4} fill={face} />
+              <rect x={ex - 8} y={8.5} width={16} height={3.5} rx={1.5} fill={C.white} />
+            </g>
+          );
+        case "C": // open
+          return (
+            <g>
+              <ellipse cx={ex} cy={11} rx={10} ry={7} fill={face} />
+              <ellipse cx={ex} cy={15} rx={6} ry={2.5} fill={tongue} />
+            </g>
+          );
+        case "D": // wide open
+          return (
+            <g>
+              <ellipse cx={ex} cy={12} rx={11} ry={10} fill={face} />
+              <rect x={ex - 8} y={3} width={16} height={3.5} rx={1.5} fill={C.white} />
+              <ellipse cx={ex} cy={18} rx={7} ry={3.5} fill={tongue} />
+            </g>
+          );
+        case "E": // round: o
+          return <ellipse cx={ex} cy={12} rx={6.5} ry={8} fill={face} />;
+        case "F": // puckered: oo, w
+          return <ellipse cx={ex} cy={12} rx={4} ry={4.5} fill={face} />;
+      }
+    }
+    if (viseme === "X") return <path d={`M ${ex - 8} 10 Q ${ex} 14 ${ex + 8} 10`} {...faceStroke} strokeWidth={4} />;
     if (talking) return <ellipse cx={ex} cy={11} rx={7} ry={mouthOpen} fill={face} />;
     switch (expr) {
       case "grin":

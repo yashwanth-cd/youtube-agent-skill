@@ -1,0 +1,91 @@
+
+  Stop calling your car an asset. Rich Dad Poor Dad has a 1-line test, and most of what you own fails it.
+  ------------------------------------------------------------------------
+    SPECIFICITY   74  ##############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       61  WORKABLE
+    formula      The Mistake  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  You got a raise and you're still broke? This one picture explains why, in 20 seconds.
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       60  WORKABLE
+    formula      The Clock  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  You probably grew up hearing "I can't afford it." Rich dad said 5 different words, and they change how your brain works.
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       96  ###################
+    STAKES        36  #######
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       55  WORKABLE
+    formula      Unclassified  (no formula matched - that is usually a summary, not a hook)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Is your house an asset? Rich Dad Poor Dad says no. But the full answer could save you from a costly mistake.
+  ------------------------------------------------------------------------
+    SPECIFICITY   52  ##########
+    ADDRESS       96  ###################
+    STAKES        22  ####
+    CURIOSITY     41  ########
+    BREVITY      100  ####################
+    VERDICT       46  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Your new car is costing you every month, and it's losing value while it does. So why do we call it an asset?
+  ------------------------------------------------------------------------
+    SPECIFICITY   35  #######
+    ADDRESS       96  ###################
+    STAKES        22  ####
+    CURIOSITY     59  ###########
+    BREVITY      100  ####################
+    VERDICT       46  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  winner: Stop calling your car an asset. Rich Dad Poor Dad has a 1-line test, and most of what you own fails it.  (61, WORKABLE)
+
+
+  Stop calling your car an asset. Rich Dad Poor Dad has a 1-line test, and your car probably fails it.
+  ------------------------------------------------------------------------
+    SPECIFICITY   74  ##############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     24  ####
+    BREVITY      100  ####################
+    VERDICT       52  WEAK
+    formula      The Mistake  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself
+
+  Is your house an asset? A book with 32 million copies sold says no. But which half of that could cost you?
+  ------------------------------------------------------------------------
+    SPECIFICITY   68  #############
+    ADDRESS       96  ###################
+    STAKES        62  ############
+    CURIOSITY     76  ###############
+    BREVITY      100  ####################
+    VERDICT       73  STRONG
+    formula      The Question  (2 patterns matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  Stop calling your car an asset. You lose money on it every month, and Rich Dad Poor Dad has a 1-line test it fails.
+  ------------------------------------------------------------------------
+    SPECIFICITY   74  ##############
+    ADDRESS       96  ###################
+    STAKES        88  #################
+    CURIOSITY     24  ####
+    BREVITY       93  ##################
+    VERDICT       55  WORKABLE
+    formula      The Mistake  (1 pattern matched)
+    weakest      CURIOSITY - cut the half of the sentence that answers itself

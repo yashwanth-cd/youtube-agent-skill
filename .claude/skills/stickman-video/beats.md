@@ -13,6 +13,18 @@ same names. If you add a beat, set, emote or camera mode, update all three.
 ]}
 ```
 
+## Tell it as a story
+
+A slide show with a narrator is the weakest version of this channel. Every section should have a
+moment that is *acted*, not explained:
+
+- Put the people in the story on stage (`cast`) and let them **speak their own lines**
+  (`speaker`): the quote, the bad advice, the boss handing over a paycheck.
+- Something physical every three or four lines: `give`, `coins`, `act` (panic, fall, jump),
+  or a walk (`x`). Stick reacts to what happens (`expr`, `emote`).
+- Then the information beat lands the lesson (chart, flow, cards).
+- Write for the ear: short sentences, contractions, a question now and then, one idea per line.
+
 ## The rules that make it look good
 
 - **Every line gets a beat** unless the previous beat should stay up. A talking head with nothing
@@ -40,8 +52,17 @@ same names. If you add a beat, set, emote or camera mode, update all three.
 | `holding` | icon name, or `""` to put it down | Stick holds it from this line on |
 | `camera` | wide, stick, content, close | framing; defaults per beat. Tight shots only happen when no beat is on screen |
 | `burst` | confetti, coins, sparkle | particles at the start of the line |
+| `speaker` | stick (default), larry, boss, shady, friend | who says the line: their own voice and lip sync; Stick turns to listen. The character must be on stage (a `cast` beat) |
+| `x` | 100–1820 | Stick walks to this spot at the start of the line (about 270 px/s), then stays there |
+| `act` | enter, exit, jump, panic, fall, sleep, shiver, think, celebrate | physical acting for the line (enter/exit walk on and off; fall tips over with a thud) |
+| `give` | `{icon, from: stick\|cast, to: stick\|cast}` | the icon flies between the characters; the receiver then holds it |
+| `coins` | `{from, to}` (stick, cast or an x position) | four coins fly across: paying, earning, money leaking away |
 
-Scene fields: `id`, `chapter`, `set`, `stickX` (default 330), `lines`.
+Lip sync is automatic: `npm run voice` measures the audio frame by frame and the speaking
+character's mouth follows it (8 mouth shapes).
+
+Scene fields: `id`, `chapter`, `set`, `bg` (a prompt for a painted background, see SKILL.md),
+`stickX` (default 330), `lines`.
 
 ## Beat types
 
@@ -68,7 +89,7 @@ Scene fields: `id`, `chapter`, `set`, `stickX` (default 330), `lines`.
 | `props` | `items[{name, label?}]` | 2–3 objects side by side |
 | `cross` | `items[]` (icon names or short text) | things that get crossed out |
 | `quote` | `text` | speech bubble from Stick |
-| `cast` | `who` (larry, boss, shady, friend), `label?`, `expr?`, `pose?`, `emote?`, `stay?` | a second character on the right. Leaves when the next beat arrives; `"stay": true` keeps them on through later beats until `clear` (keep those beats narrow, they share the stage) |
+| `cast` | `who` (larry, boss, shady, friend), `label?`, `expr?`, `pose?`, `emote?`, `stay?`, `x?` (default 1590), `enter?` (walks on, default true) | a second character on the right. Leaves when the next beat arrives; `"stay": true` keeps them on through later beats until `clear` (keep those beats narrow, they share the stage) |
 | `clear` | – | empty the stage (lets the camera go tight on Stick) |
 
 Drawn props (animated, older style): jar, bucket (leaks), car, moneyTree, safe, basket, hammock,

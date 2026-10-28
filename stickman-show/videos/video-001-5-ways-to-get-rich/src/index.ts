@@ -4,6 +4,7 @@ import meta from "../video.json";
 import { Thumbnail } from "./Thumbnail";
 import { END_CARD } from "./timing";
 import timing from "./timing.json";
+import { BACKGROUNDS } from "./assets";
 import { SHORT_VOICE, VOICE } from "./voice";
 
 export default defineVideo({
@@ -14,6 +15,7 @@ export default defineVideo({
   scenes: {},
   script: script as Script,
   voices: VOICE,
+  backgrounds: BACKGROUNDS,
   Thumbnail,
   shorts: meta.shorts as ShortDef[],
   shortVoices: SHORT_VOICE,

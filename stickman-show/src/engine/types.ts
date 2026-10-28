@@ -40,6 +40,8 @@ export type VideoInput = {
   script?: Script;
   /** Narration per scene (generated in src/voice.ts as VOICE). */
   voices?: Record<string, string>;
+  /** Painted backgrounds per scene id (generated in src/assets.ts by tools/wangp_assets.py). */
+  backgrounds?: Record<string, string>;
   Thumbnail: React.FC;
   shorts: ShortDef[];
   /** Spoken hook for each Short, keyed by slug (generated in src/voice.ts). */

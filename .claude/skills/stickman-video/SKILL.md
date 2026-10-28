@@ -46,6 +46,11 @@ npm run new-video -- <kebab-slug> "<working title>"     # -> videos/video-NNN-<s
   ("two hundred dollars"). Beats: digits and $ are fine.
 - Teach something concrete in every section: a named framework, rule of thumb, worked example or
   common mistake. A list of vague tips is what the viewer can get anywhere.
+- **Tell it as a story** (see beats.md): characters on stage speaking their own lines
+  (`speaker`), something physical every few lines (`give`, `coins`, `act`, walking with `x`),
+  and then the information beat that lands the lesson. Don't make a slide show with a narrator.
+- Facts about real people, books and companies: verify with web search first, attribute opinions
+  ("critics argue…"), and list the sources in `script.json` → `sources`.
 - Icons: `npm run icons -- search <word>` (e.g. `search money`, `search house`). 3,000+ Fluent Emoji.
 - Length: `npm run check -- video-NNN` prints the word count and the runtime estimate (calibrated
   to the channel voice). Aim for 1,000–1,250 words for 6–8 minutes. Fix every ERROR it prints.
@@ -60,10 +65,20 @@ change the two words and the pose (it already follows the channel layout).
 **Checkpoint:** show the user the top 2 hooks with scores, the title and thumbnail pairing, and
 the runtime estimate. Ask "ship it, or change it?". Skip this only if they said to run without stopping.
 
+## 3b. Optional: painted backgrounds with WanGP (needs the user's GPU PC)
+
+Give each scene a `bg` prompt in `script.json` (a place, no people, no text). On a machine with
+WanGP installed, the user runs, with WanGP's Python:
+`python tools/wangp_assets.py videos/video-NNN-<slug> --wangp <WanGP folder>`.
+That paints `assets/bg-<scene>.png` with Qwen-Image (Apache-2.0) and rewrites `src/assets.ts`.
+Those scenes then use the painting instead of the drawn set, and the user commits the
+`assets/` folder. This cloud container has no GPU, so never try to run it here. Without
+paintings, everything still renders with the drawn sets.
+
 ## 4. Voice, look, fix
 
 ```bash
-npm run voice -- videos/video-NNN-<slug>      # Kokoro narration mp3s, src/timing.json, captions/narration.srt
+npm run voice -- videos/video-NNN-<slug>      # Kokoro narration + character voices, lip-sync track, src/timing.json, captions
 npm run preview -- video-NNN                  # ONE contact sheet: a frame per line -> out/preview-vNNN-full.png
 ```
 Read the single preview image. Fix overlaps by changing beats in `script.json`. Changing spoken

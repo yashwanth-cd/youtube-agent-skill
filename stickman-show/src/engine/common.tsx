@@ -1,8 +1,8 @@
 import { Audio } from "@remotion/media";
 import React, { createContext, useContext } from "react";
-import { AbsoluteFill, Easing, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
+import { AbsoluteFill, Easing, Img, Sequence, interpolate, staticFile, useCurrentFrame } from "remotion";
 import { Line, ease, lerp } from "./anim";
-import { CamKey, camAt, camTransform, shakeAt } from "./camera";
+import { CamKey, camAt, camCss, camTransform, shakeAt } from "./camera";
 import { SetBg, SetName } from "./sets";
 import { BOLD, C, GROUND, H, NIGHT, W } from "./theme";
 import { Coin } from "./props";
@@ -37,7 +37,9 @@ export const Scene: React.FC<{
   shake?: number[];
   /** Drawn on top of the camera (not moved by it): titles, overlays. */
   overlay?: React.ReactNode;
-}> = ({ lines: L, voice, duration: durationInFrames, sfx = [], ground = true, children, captions = true, set, camera = [], shake = [], overlay }) => {
+  /** A painted background image (e.g. made with WanGP) used instead of the drawn set. */
+  background?: string;
+}> = ({ lines: L, voice, duration: durationInFrames, sfx = [], ground = true, children, captions = true, set, camera = [], shake = [], overlay, background }) => {
   const frame = useCurrentFrame();
   const media = useContext(Media);
   const audio = (
@@ -79,10 +81,19 @@ export const Scene: React.FC<{
   return (
     <AbsoluteFill>
       {audio}
-      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: "absolute", inset: 0, background: NIGHT }}>
-        <g transform={camTransform(cam, 0.55, [sh[0] * 0.5, sh[1] * 0.5])}>
-          <SetBg name={set} />
-        </g>
+      {background && (
+        <AbsoluteFill style={{ background: NIGHT, overflow: "hidden" }}>
+          <Img src={background} style={{ position: "absolute", left: 0, top: 0, width: W, height: H, objectFit: "cover", transformOrigin: "0 0", transform: camCss(cam, 0.55, [sh[0] * 0.5, sh[1] * 0.5]) }} />
+          {/* a light haze pushes the painting back so characters and beats stay in front */}
+          <AbsoluteFill style={{ background: "rgba(255, 250, 240, 0.16)" }} />
+        </AbsoluteFill>
+      )}
+      <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H} style={{ position: "absolute", inset: 0, background: background ? "transparent" : NIGHT }}>
+        {!background && (
+          <g transform={camTransform(cam, 0.55, [sh[0] * 0.5, sh[1] * 0.5])}>
+            <SetBg name={set} />
+          </g>
+        )}
         <g transform={camTransform(cam, 1, sh)}>{children}</g>
         {overlay}
         {captions && media.captions && <KaraokeCaptions lines={Object.values(L)} />}

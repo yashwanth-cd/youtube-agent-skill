@@ -13,6 +13,8 @@ const SETS = ["room", "office", "street", "park", "stage", "board", "kitchen", "
 const EMOTES = ["idea", "sweat", "question", "exclaim", "money", "love", "sparkle", "angry", "zzz", "fire", "think"];
 const CAMERAS = ["wide", "stick", "content", "close"];
 const BURSTS = ["confetti", "coins", "sparkle"];
+const ACTS = ["enter", "exit", "jump", "panic", "fall", "sleep", "shiver", "think", "celebrate"];
+const SPEAKERS = ["stick", "larry", "boss", "shady", "friend"];
 const ICONS = new Set(ICON_NAMES);
 const thing = (n) => PROPS.includes(n) || ICONS.has(n);
 const POSES = ["wave", "stand", "relaxed", "cheer", "pointR", "pointL", "pointUpR", "shrug", "sad", "think", "hold", "holdHigh", "present", "presentL", "hips", "shock", "facepalm", "push", "sit"];
@@ -56,6 +58,11 @@ export const check = (dir) => {
       if (l.camera && !CAMERAS.includes(l.camera)) errors.push(`${where}: unknown camera "${l.camera}"`);
       if (l.burst && !BURSTS.includes(l.burst)) errors.push(`${where}: unknown burst "${l.burst}"`);
       if (l.holding && !ICONS.has(l.holding)) errors.push(`${where}: holding "${l.holding}" is not a Fluent icon`);
+      if (l.act && !ACTS.includes(l.act)) errors.push(`${where}: unknown act "${l.act}" - one of ${ACTS.join(", ")}`);
+      if (l.speaker && !SPEAKERS.includes(l.speaker)) errors.push(`${where}: unknown speaker "${l.speaker}"`);
+      if (l.x !== undefined && (typeof l.x !== "number" || l.x < 100 || l.x > 1820)) errors.push(`${where}: x must be a number between 100 and 1820`);
+      if (l.give && (!ICONS.has(l.give.icon) || !["stick", "cast"].includes(l.give.from) || !["stick", "cast"].includes(l.give.to))) errors.push(`${where}: give needs {icon, from: stick|cast, to: stick|cast}`);
+      if (l.coins && (l.coins.from === undefined || l.coins.to === undefined)) errors.push(`${where}: coins needs {from, to} (stick, cast or an x position)`);
       const b = l.beat;
       if (b) {
         if (!BEATS.includes(b.type)) errors.push(`${where}: unknown beat type "${b.type}"`);

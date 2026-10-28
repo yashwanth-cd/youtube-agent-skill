@@ -1,0 +1,1126 @@
+{
+  "title": "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes",
+  "thumbnail": "NOT AN ASSET?",
+  "hook_formula": "The Question",
+  "sources": [
+    "Six lesson titles, 1997 publication, co-author Sharon Lechter: library catalogue record (Warner Business Books, 2000 edition)",
+    "Over 32 million copies sold: reported figure, Wikipedia 'Rich Dad Poor Dad'",
+    "Assets put money in your pocket, liabilities take it out; three cash-flow patterns: the book, via summaries",
+    "Critics doubting 'rich dad' existed: John T. Reed (a rival author) - attributed as opinion",
+    "Rich Global LLC Chapter 7 filing, 20 Aug 2012, Wyoming, after the Learning Annex lawsuit: news reports"
+  ],
+  "scenes": [
+    {
+      "id": "hook",
+      "chapter": "Is your house an asset?",
+      "set": "room",
+      "lines": [
+        {
+          "key": "house",
+          "text": "Your house is not an asset?",
+          "expr": "o",
+          "emote": "question",
+          "camera": "wide",
+          "beat": {
+            "type": "icon",
+            "icons": [
+              "house-with-garden",
+              "red-question-mark"
+            ],
+            "label": "NOT AN ASSET?"
+          }
+        },
+        {
+          "key": "book",
+          "text": "That's from a book with over thirty two million copies sold.",
+          "beat": {
+            "type": "counter",
+            "to": 32,
+            "prefix": "",
+            "suffix": "M+",
+            "label": "copies sold",
+            "note": "reported figure",
+            "icon": "open-book",
+            "color": "blue"
+          }
+        },
+        {
+          "key": "which",
+          "text": "But which of its six lessons actually work, and which could leave you broke?",
+          "expr": "worried",
+          "emote": "sweat",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "WORKS",
+              "icon": "light-bulb",
+              "items": [
+                "keep these"
+              ],
+              "color": "green"
+            },
+            "right": {
+              "title": "RISKY",
+              "icon": "bomb",
+              "items": [
+                "skip these"
+              ],
+              "color": "red"
+            }
+          },
+          "act": "panic"
+        },
+        {
+          "key": "turn",
+          "text": "Here's Rich Dad Poor Dad in about eight minutes. The six lessons, the one picture that explains the whole book, and the parts you should ignore.",
+          "expr": "grin",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "books",
+                "title": "6 LESSONS",
+                "text": "the whole book",
+                "color": "blue"
+              },
+              {
+                "icon": "bar-chart",
+                "title": "1 PICTURE",
+                "text": "that explains it",
+                "color": "green"
+              },
+              {
+                "icon": "warning",
+                "title": "THE TRAPS",
+                "text": "what to ignore",
+                "color": "red"
+              }
+            ]
+          }
+        }
+      ],
+      "bg": "a cosy suburban living room with a big window showing a row of houses, a sofa and a floor lamp"
+    },
+    {
+      "id": "dads",
+      "chapter": "The two dads",
+      "set": "park",
+      "lines": [
+        {
+          "key": "title",
+          "text": "First, the two dads.",
+          "beat": {
+            "type": "title",
+            "title": "THE TWO DADS",
+            "sub": "one book, two ways to think about money",
+            "color": "gold",
+            "icon": "people-hugging"
+          }
+        },
+        {
+          "key": "poor",
+          "text": "Robert Kiyosaki writes that he grew up with two father figures. His own dad was highly educated, and his advice was simple.",
+          "beat": {
+            "type": "cast",
+            "who": "larry",
+            "label": "POOR DAD",
+            "pose": "present",
+            "expr": "smile"
+          }
+        },
+        {
+          "key": "poorsays",
+          "text": "Study hard, get good grades, and find a safe job.",
+          "speaker": "larry"
+        },
+        {
+          "key": "rich",
+          "text": "His best friend's dad barely finished school, but he built businesses, and his advice was very different.",
+          "beat": {
+            "type": "cast",
+            "who": "boss",
+            "label": "RICH DAD",
+            "pose": "hips",
+            "expr": "smug"
+          }
+        },
+        {
+          "key": "richsays",
+          "text": "Learn how money works, and make it work for you.",
+          "speaker": "boss"
+        },
+        {
+          "key": "afford1",
+          "text": "When something cost too much, poor dad had one answer.",
+          "beat": {
+            "type": "cast",
+            "who": "larry",
+            "label": "POOR DAD",
+            "pose": "shrug",
+            "expr": "frown"
+          }
+        },
+        {
+          "key": "afford2",
+          "text": "I can't afford it.",
+          "speaker": "larry"
+        },
+        {
+          "key": "afford3",
+          "text": "Rich dad asked a question instead.",
+          "beat": {
+            "type": "cast",
+            "who": "boss",
+            "label": "RICH DAD",
+            "pose": "think",
+            "expr": "smile"
+          }
+        },
+        {
+          "key": "afford4",
+          "text": "How can I afford it?",
+          "speaker": "boss"
+        },
+        {
+          "key": "afford",
+          "text": "One sentence shuts your brain off. The other switches it on.",
+          "emote": "idea",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "POOR DAD",
+              "icon": "graduation-cap",
+              "items": [
+                "\"I can't afford it\""
+              ],
+              "color": "blue"
+            },
+            "right": {
+              "title": "RICH DAD",
+              "icon": "briefcase",
+              "items": [
+                "\"How can I afford it?\""
+              ],
+              "color": "green"
+            }
+          }
+        },
+        {
+          "key": "thread",
+          "text": "That habit, asking how instead of saying I can't, runs through the whole book. Keep it in mind for every lesson that follows.",
+          "expr": "smug",
+          "beat": {
+            "type": "stamp",
+            "text": "ASK HOW, NOT \"I CAN'T\"",
+            "color": "green"
+          }
+        }
+      ],
+      "bg": "a sunny suburban park with two paths splitting in different directions, trees and a bench"
+    },
+    {
+      "id": "lesson1",
+      "chapter": "1. The rich don't work for money",
+      "set": "office",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson one. The rich don't work for money.",
+          "beat": {
+            "type": "title",
+            "n": 1,
+            "title": "THE RICH DON'T WORK FOR MONEY",
+            "sub": "they make money work for them",
+            "color": "green",
+            "icon": "money-bag"
+          }
+        },
+        {
+          "key": "paid",
+          "text": "Great work this month. Here's your paycheck!",
+          "speaker": "friend",
+          "expr": "grin",
+          "beat": {
+            "type": "cast",
+            "who": "friend",
+            "label": "YOUR BOSS",
+            "pose": "present",
+            "expr": "grin"
+          },
+          "give": {
+            "icon": "dollar-banknote",
+            "from": "cast",
+            "to": "stick"
+          }
+        },
+        {
+          "key": "race",
+          "text": "Most people get a paycheck, spend it, and wait for the next one. They get a raise, and their spending rises right along with it. Kiyosaki calls this the rat race.",
+          "expr": "flat",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "PAYCHECK",
+                "icon": "dollar-banknote"
+              },
+              {
+                "text": "BILLS",
+                "icon": "receipt"
+              },
+              {
+                "text": "RAISE",
+                "icon": "chart-increasing"
+              },
+              {
+                "text": "BIGGER BILLS",
+                "icon": "credit-card"
+              }
+            ]
+          },
+          "coins": {
+            "from": "stick",
+            "to": 1500
+          }
+        },
+        {
+          "key": "fear",
+          "text": "He says two feelings keep you running. Fear of not paying the bills, and desire for the next upgrade.",
+          "emote": "sweat",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "face-screaming-in-fear",
+                "title": "FEAR",
+                "text": "of missing the bills",
+                "color": "red"
+              },
+              {
+                "icon": "money-mouth-face",
+                "title": "DESIRE",
+                "text": "for the next upgrade",
+                "color": "gold"
+              }
+            ]
+          },
+          "holding": ""
+        },
+        {
+          "key": "salary",
+          "text": "That's why people with good salaries can still be one missed paycheck away from trouble. Earning more doesn't fix it on its own, if every raise just becomes a bigger lifestyle.",
+          "expr": "frown",
+          "beat": {
+            "type": "icon",
+            "icons": [
+              "briefcase",
+              "money-with-wings"
+            ],
+            "label": "GOOD SALARY, STILL STUCK"
+          }
+        },
+        {
+          "key": "out",
+          "text": "The way out is to make money work for you, instead of only working for money.",
+          "expr": "grin",
+          "beat": {
+            "type": "text",
+            "text": "MAKE MONEY WORK FOR YOU",
+            "icon": "gear",
+            "color": "green"
+          },
+          "act": "jump"
+        }
+      ],
+      "bg": "a busy open-plan office at the end of the month, desks, a wall clock and a calendar"
+    },
+    {
+      "id": "lesson2",
+      "chapter": "2. Assets vs liabilities",
+      "set": "board",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson two. Learn the one rule of money they don't teach at school.",
+          "beat": {
+            "type": "title",
+            "n": 2,
+            "title": "FINANCIAL LITERACY",
+            "sub": "the one rule they don't teach at school",
+            "color": "blue",
+            "icon": "books"
+          }
+        },
+        {
+          "key": "rule",
+          "text": "This is the most important idea in the book. An asset puts money in your pocket. A liability takes money out of your pocket.",
+          "emote": "idea",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "LIABILITY",
+              "icon": "money-with-wings",
+              "items": [
+                "takes money out"
+              ],
+              "color": "red"
+            },
+            "right": {
+              "title": "ASSET",
+              "icon": "money-bag",
+              "items": [
+                "puts money in"
+              ],
+              "color": "green"
+            }
+          }
+        },
+        {
+          "key": "car",
+          "text": "So a new car feels like an asset, but it costs you fuel, insurance and repairs every month, and it loses value. By his rule, it's a liability.",
+          "holding": "automobile",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "fuel-pump",
+                "title": "FUEL",
+                "color": "red"
+              },
+              {
+                "icon": "shield",
+                "title": "INSURANCE",
+                "color": "blue"
+              },
+              {
+                "icon": "wrench",
+                "title": "REPAIRS",
+                "color": "gold"
+              },
+              {
+                "icon": "chart-decreasing",
+                "title": "LOSES VALUE",
+                "color": "purple"
+              }
+            ]
+          }
+        },
+        {
+          "key": "test",
+          "text": "Here's a quick test. If you stopped working tomorrow, what would still pay you? That's your asset column.",
+          "holding": "",
+          "emote": "think",
+          "beat": {
+            "type": "quote",
+            "text": "IF I STOPPED WORKING, WHAT WOULD STILL PAY ME?"
+          }
+        },
+        {
+          "key": "poor",
+          "text": "Now the picture that explains everything. The poor earn a salary, and it goes straight to living costs.",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "SALARY",
+                "icon": "dollar-banknote"
+              },
+              {
+                "text": "RENT & FOOD",
+                "icon": "house"
+              },
+              {
+                "text": "NOTHING LEFT",
+                "icon": "money-with-wings"
+              }
+            ]
+          }
+        },
+        {
+          "key": "middle",
+          "text": "The middle class earn more, but borrow to buy things that look like assets. A bigger house, a new car. The payments eat every raise.",
+          "expr": "worried",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "BIGGER SALARY",
+                "icon": "briefcase"
+              },
+              {
+                "text": "MORTGAGE",
+                "icon": "house-with-garden"
+              },
+              {
+                "text": "CAR LOAN",
+                "icon": "automobile"
+              },
+              {
+                "text": "NOTHING LEFT",
+                "icon": "money-with-wings"
+              }
+            ]
+          }
+        },
+        {
+          "key": "rich",
+          "text": "The rich buy assets first. The assets pay them, and that income pays for the luxuries.",
+          "expr": "grin",
+          "burst": "coins",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "ASSETS",
+                "icon": "chart-increasing"
+              },
+              {
+                "text": "INCOME",
+                "icon": "money-bag"
+              },
+              {
+                "text": "THEN LUXURIES",
+                "icon": "gem-stone"
+              }
+            ]
+          }
+        },
+        {
+          "key": "free",
+          "text": "By that logic, you're financially free when your assets earn more each month than you spend.",
+          "beat": {
+            "type": "bars",
+            "title": "FINANCIALLY FREE WHEN...",
+            "bars": [
+              {
+                "label": "ASSET INCOME",
+                "value": 2100,
+                "top": "$2,100/mo",
+                "color": "green",
+                "icon": "money-bag"
+              },
+              {
+                "label": "EXPENSES",
+                "value": 2000,
+                "top": "$2,000/mo",
+                "color": "red",
+                "icon": "receipt"
+              }
+            ],
+            "note": "example numbers"
+          }
+        }
+      ],
+      "bg": "a bright classroom with a large empty whiteboard and a desk"
+    },
+    {
+      "id": "lesson3",
+      "chapter": "3. Mind your own business",
+      "set": "kitchen",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson three. Mind your own business.",
+          "beat": {
+            "type": "title",
+            "n": 3,
+            "title": "MIND YOUR OWN BUSINESS",
+            "sub": "your asset column",
+            "color": "gold",
+            "icon": "seedling"
+          }
+        },
+        {
+          "key": "job",
+          "text": "Your job is your employer's business. Your business, he says, is your asset column.",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "YOUR JOB",
+              "icon": "briefcase",
+              "items": [
+                "builds their assets"
+              ],
+              "color": "blue"
+            },
+            "right": {
+              "title": "YOUR BUSINESS",
+              "icon": "seedling",
+              "items": [
+                "builds your assets"
+              ],
+              "color": "green"
+            }
+          }
+        },
+        {
+          "key": "keep",
+          "text": "He doesn't say quit. Keep the day job, but put your spare money and time into assets. Stocks, real estate, a small business, or things you create.",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "chart-increasing",
+                "title": "STOCKS",
+                "color": "green"
+              },
+              {
+                "icon": "house-with-garden",
+                "title": "PROPERTY",
+                "color": "blue"
+              },
+              {
+                "icon": "convenience-store",
+                "title": "BUSINESS",
+                "color": "gold"
+              },
+              {
+                "icon": "open-book",
+                "title": "CREATIONS",
+                "color": "purple"
+              }
+            ]
+          }
+        },
+        {
+          "key": "start",
+          "text": "You don't need much to start. Even a small automatic amount into an index fund each month puts the first thing in your asset column.",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "SMALL AMOUNT",
+                "icon": "coin"
+              },
+              {
+                "text": "EVERY MONTH",
+                "icon": "calendar"
+              },
+              {
+                "text": "ASSET COLUMN",
+                "icon": "chart-increasing"
+              }
+            ]
+          }
+        },
+        {
+          "key": "last",
+          "text": "And here's the rule worth stealing. Buy luxuries last, and let your assets pay for them.",
+          "expr": "smug",
+          "holding": "sport-utility-vehicle",
+          "beat": {
+            "type": "text",
+            "text": "LUXURIES LAST",
+            "sub": "let your assets pay for them",
+            "icon": "sport-utility-vehicle",
+            "color": "gold"
+          }
+        }
+      ],
+      "bg": "a home kitchen table set up as a small side-business workspace, with a laptop and plants"
+    },
+    {
+      "id": "lesson4",
+      "chapter": "4. Taxes and corporations",
+      "set": "bank",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson four. Taxes, and the power of corporations.",
+          "holding": "",
+          "beat": {
+            "type": "title",
+            "n": 4,
+            "title": "TAXES & CORPORATIONS",
+            "sub": "the rules are different for owners",
+            "color": "red",
+            "icon": "balance-scale"
+          }
+        },
+        {
+          "key": "employee",
+          "text": "An employee earns, gets taxed, and then spends what's left.",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "EARN",
+                "icon": "briefcase"
+              },
+              {
+                "text": "TAXED",
+                "icon": "receipt"
+              },
+              {
+                "text": "SPEND THE REST",
+                "icon": "shopping-cart"
+              }
+            ]
+          }
+        },
+        {
+          "key": "owner",
+          "text": "Kiyosaki points out that a business can earn, pay its genuine business costs, and then get taxed on what's left.",
+          "emote": "idea",
+          "beat": {
+            "type": "flow",
+            "items": [
+              {
+                "text": "EARN",
+                "icon": "convenience-store"
+              },
+              {
+                "text": "BUSINESS COSTS",
+                "icon": "gear"
+              },
+              {
+                "text": "TAXED ON THE REST",
+                "icon": "receipt"
+              }
+            ]
+          }
+        },
+        {
+          "key": "costs",
+          "text": "Think equipment, software, or a vehicle genuinely used for the business. Not your holiday. Mixing those up is exactly how people get into trouble with the tax office.",
+          "expr": "worried",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "BUSINESS COST",
+              "icon": "laptop",
+              "items": [
+                "equipment, software",
+                "tools for the job"
+              ],
+              "color": "green"
+            },
+            "right": {
+              "title": "NOT A BUSINESS COST",
+              "icon": "airplane",
+              "items": [
+                "your holiday",
+                "personal spending"
+              ],
+              "color": "red"
+            }
+          }
+        },
+        {
+          "key": "learn",
+          "text": "The rules differ a lot from country to country, so talk to an accountant before you try anything. But the lesson stands. For many people, tax is their biggest bill, so learn how it works.",
+          "beat": {
+            "type": "text",
+            "text": "LEARN HOW TAX WORKS",
+            "sub": "rules vary by country: ask an accountant",
+            "icon": "balance-scale",
+            "color": "red"
+          }
+        }
+      ],
+      "bg": "the grand hall of an old bank with marble columns and a big vault door"
+    },
+    {
+      "id": "lesson5",
+      "chapter": "5. The rich invent money",
+      "set": "street",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson five. The rich invent money.",
+          "beat": {
+            "type": "title",
+            "n": 5,
+            "title": "THE RICH INVENT MONEY",
+            "sub": "financial intelligence",
+            "color": "purple",
+            "icon": "light-bulb"
+          }
+        },
+        {
+          "key": "spot",
+          "text": "This one is about financial intelligence. Learning enough to spot opportunities other people walk right past.",
+          "beat": {
+            "type": "icon",
+            "icons": [
+              "magnifying-glass-tilted-left",
+              "light-bulb"
+            ],
+            "label": "SPOT WHAT OTHERS MISS"
+          }
+        },
+        {
+          "key": "four",
+          "text": "He says financial intelligence comes from four areas. Accounting, so you can read the numbers. Investing. Understanding markets. And the law.",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "bar-chart",
+                "title": "ACCOUNTING",
+                "text": "read the numbers",
+                "color": "blue"
+              },
+              {
+                "icon": "chart-increasing",
+                "title": "INVESTING",
+                "text": "money that grows",
+                "color": "green"
+              },
+              {
+                "icon": "globe-showing-americas",
+                "title": "MARKETS",
+                "text": "supply and demand",
+                "color": "gold"
+              },
+              {
+                "icon": "balance-scale",
+                "title": "THE LAW",
+                "text": "tax and contracts",
+                "color": "red"
+              }
+            ]
+          }
+        },
+        {
+          "key": "trap",
+          "text": "But notice the trap. Every opportunity comes with risk, and the book tells lots of exciting deal stories, and very few about deals that go wrong.",
+          "expr": "worried",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "rocket",
+                "title": "THE UPSIDE",
+                "text": "what the stories show",
+                "color": "green"
+              },
+              {
+                "icon": "bomb",
+                "title": "THE RISK",
+                "text": "what the stories skip",
+                "color": "red"
+              }
+            ]
+          },
+          "act": "fall"
+        },
+        {
+          "key": "real",
+          "text": "So the real lesson is this. Learn first, start small, and never bet money you can't afford to lose.",
+          "beat": {
+            "type": "list",
+            "title": "THE SAFE VERSION",
+            "items": [
+              {
+                "text": "learn first",
+                "icon": "books"
+              },
+              {
+                "text": "start small",
+                "icon": "seedling"
+              },
+              {
+                "text": "never bet the rent money",
+                "icon": "shield"
+              }
+            ]
+          }
+        }
+      ],
+      "bg": "a lively city street with shops, a stock-ticker screen on a building and a street lamp"
+    },
+    {
+      "id": "lesson6",
+      "chapter": "6. Work to learn, not to earn",
+      "set": "office",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Lesson six. Work to learn, don't work for money.",
+          "beat": {
+            "type": "title",
+            "n": 6,
+            "title": "WORK TO LEARN",
+            "sub": "not just to earn",
+            "color": "green",
+            "icon": "graduation-cap"
+          }
+        },
+        {
+          "key": "choose",
+          "text": "Pick jobs for what they teach you, not only for what they pay.",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "WORK TO EARN",
+              "icon": "dollar-banknote",
+              "items": [
+                "the paycheck"
+              ],
+              "color": "blue"
+            },
+            "right": {
+              "title": "WORK TO LEARN",
+              "icon": "brain",
+              "items": [
+                "skills for life"
+              ],
+              "color": "green"
+            }
+          }
+        },
+        {
+          "key": "skills",
+          "text": "He singles out a few skills that pay for life. Selling and communicating. Managing people and money. And understanding investing.",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "megaphone",
+                "title": "SELLING",
+                "text": "and communicating",
+                "color": "gold"
+              },
+              {
+                "icon": "handshake",
+                "title": "MANAGING",
+                "text": "people and money",
+                "color": "blue"
+              },
+              {
+                "icon": "chart-increasing",
+                "title": "INVESTING",
+                "text": "how money grows",
+                "color": "green"
+              }
+            ]
+          }
+        },
+        {
+          "key": "tuition",
+          "text": "That might mean less pay for a while. Think of it as tuition that somebody else pays for.",
+          "beat": {
+            "type": "icon",
+            "icons": [
+              "graduation-cap",
+              "dollar-banknote"
+            ],
+            "label": "PAID TUITION"
+          }
+        },
+        {
+          "key": "why",
+          "text": "A narrow specialist is easy to replace. Someone who can sell, lead and invest can build almost anything.",
+          "expr": "grin",
+          "beat": {
+            "type": "text",
+            "text": "SKILLS COMPOUND TOO",
+            "icon": "trophy",
+            "color": "green"
+          }
+        }
+      ],
+      "bg": "a modern workshop and training room with tools, books and a projector screen"
+    },
+    {
+      "id": "wrong",
+      "chapter": "What the book gets wrong",
+      "set": "stage",
+      "lines": [
+        {
+          "key": "title",
+          "text": "Now, the honest part. What the book gets wrong.",
+          "beat": {
+            "type": "title",
+            "title": "WHAT IT GETS WRONG",
+            "sub": "keep the ideas, skip the hype",
+            "color": "red",
+            "icon": "warning"
+          }
+        },
+        {
+          "key": "fable",
+          "text": "Critics, including the rival author John T. Reed, doubt that rich dad was ever a real person. So read it as a fable, not a biography.",
+          "expr": "flat",
+          "beat": {
+            "type": "icon",
+            "icon": "open-book",
+            "label": "READ IT AS A FABLE",
+            "sub": "critics question whether rich dad existed"
+          },
+          "act": "think"
+        },
+        {
+          "key": "risk",
+          "text": "It's light on risk. Borrowing to buy property multiplies losses as fast as gains. And in twenty twelve, Kiyosaki's own company, Rich Global, filed for bankruptcy after losing a lawsuit.",
+          "expr": "worried",
+          "beat": {
+            "type": "cards",
+            "items": [
+              {
+                "icon": "chart-decreasing",
+                "title": "DEBT",
+                "text": "multiplies losses too",
+                "color": "red"
+              },
+              {
+                "icon": "warning",
+                "title": "2012",
+                "text": "Rich Global LLC filed for bankruptcy",
+                "color": "gold"
+              }
+            ]
+          }
+        },
+        {
+          "key": "house",
+          "text": "And your house? It doesn't pay you every month, so by his definition it's not an asset. But paying it off builds equity, and you need somewhere to live. It's not that simple.",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "HIS VIEW",
+              "icon": "house",
+              "items": [
+                "costs you monthly"
+              ],
+              "color": "red"
+            },
+            "right": {
+              "title": "FULL PICTURE",
+              "icon": "house-with-garden",
+              "items": [
+                "builds equity",
+                "you need a home"
+              ],
+              "color": "green"
+            }
+          }
+        },
+        {
+          "key": "boring",
+          "text": "He also barely talks about the simplest asset of all. Low cost index funds that anyone can buy with almost no expertise.",
+          "emote": "idea",
+          "beat": {
+            "type": "icon",
+            "icon": "chart-increasing",
+            "label": "THE BORING ASSET HE SKIPS",
+            "sub": "low-cost index funds"
+          }
+        },
+        {
+          "key": "school",
+          "text": "And while he's right that school skips money, his dismissive tone about education doesn't fit most careers. Doctors, engineers and nurses still need their degrees.",
+          "expr": "flat",
+          "beat": {
+            "type": "compare",
+            "left": {
+              "title": "HE'S RIGHT",
+              "icon": "books",
+              "items": [
+                "school skips money"
+              ],
+              "color": "green"
+            },
+            "right": {
+              "title": "HE'S WRONG",
+              "icon": "graduation-cap",
+              "items": [
+                "degrees still matter"
+              ],
+              "color": "red"
+            }
+          }
+        }
+      ],
+      "bg": "an empty theatre stage at night with one spotlight and a dark blue curtain"
+    },
+    {
+      "id": "close",
+      "chapter": "The book on one page",
+      "set": "room",
+      "lines": [
+        {
+          "key": "keep",
+          "text": "So keep the big idea, and leave the hype. An asset puts money in your pocket. A liability takes it out.",
+          "expr": "grin",
+          "beat": {
+            "type": "text",
+            "text": "KEEP THE IDEA. SKIP THE HYPE.",
+            "icon": "gem-stone",
+            "color": "green"
+          }
+        },
+        {
+          "key": "recap",
+          "text": "Make money work for you. Know an asset from a liability. Build your own asset column. Learn how tax works. Grow your financial intelligence. And work to learn.",
+          "expr": "grin",
+          "beat": {
+            "type": "steps",
+            "items": [
+              {
+                "text": "MONEY WORKS",
+                "icon": "gear"
+              },
+              {
+                "text": "ASSETS",
+                "icon": "money-bag"
+              },
+              {
+                "text": "YOUR COLUMN",
+                "icon": "seedling"
+              },
+              {
+                "text": "TAX",
+                "icon": "balance-scale"
+              },
+              {
+                "text": "FINANCIAL IQ",
+                "icon": "brain"
+              },
+              {
+                "text": "LEARN",
+                "icon": "graduation-cap"
+              }
+            ]
+          }
+        },
+        {
+          "key": "job",
+          "text": "Your one job tonight. Take a sheet of paper, draw two columns, and list your assets and liabilities by his definition. That's the whole book, on one page.",
+          "emote": "idea",
+          "holding": "memo",
+          "beat": {
+            "type": "list",
+            "title": "TONIGHT",
+            "items": [
+              {
+                "text": "draw two columns",
+                "icon": "memo"
+              },
+              {
+                "text": "assets: put money in",
+                "icon": "money-bag"
+              },
+              {
+                "text": "liabilities: take money out",
+                "icon": "money-with-wings"
+              }
+            ]
+          }
+        },
+        {
+          "key": "bye",
+          "text": "I'll see you in the next one.",
+          "pose": "wave",
+          "holding": "",
+          "expr": "grin",
+          "beat": {
+            "type": "clear"
+          }
+        }
+      ],
+      "bg": "a cosy desk by a window at night with a notebook and a warm desk lamp"
+    }
+  ]
+}

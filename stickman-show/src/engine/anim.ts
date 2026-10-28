@@ -3,12 +3,12 @@ import { Easing, interpolate, spring } from "remotion";
 export const FPS = 30;
 
 export type Line = { key: string; text: string; start: number; end: number };
-export type SceneTiming = { id: string; chapter: string; durationInFrames: number; lines: Line[] };
+export type SceneTiming = { id: string; chapter: string; durationInFrames: number; lines: Line[]; mouth?: string };
 /** What tools/tts.py writes to a video's src/timing.json. */
 export type Timing = {
   fps: number;
   scenes: SceneTiming[];
-  shorts?: Record<string, { text: string; durationInFrames: number }>;
+  shorts?: Record<string, { text: string; durationInFrames: number; mouth?: string }>;
 };
 
 /** Timing helpers bound to one video's timing.json. */

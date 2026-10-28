@@ -1,0 +1,60 @@
+{
+  "id": "v002",
+  "number": 2,
+  "slug": "rich-dad-poor-dad",
+  "title": "Rich Dad Poor Dad Summary: 6 Lessons in 7 Minutes",
+  "thumbnailText": "NOT AN ASSET?",
+  "status": "scripting",
+  "runtime": null,
+  "youtube": {
+    "url": null,
+    "published": null
+  },
+  "voice": {
+    "engine": "kokoro",
+    "voice": "am_michael",
+    "speed": 1.0
+  },
+  "shorts": [
+    {
+      "n": 1,
+      "slug": "i-cant-afford-it",
+      "from": "dads.afford1",
+      "to": "dads.thread",
+      "still": "dads.afford4+0.3",
+      "hook": "You probably grew up hearing \"I can't afford it.\" Rich dad said 5 different words, and they change how your brain works.",
+      "onScreen": "\"I CAN'T\" VS \"HOW CAN I?\"",
+      "youtube": null
+    },
+    {
+      "n": 2,
+      "slug": "why-a-raise-isnt-enough",
+      "from": "lesson2.poor",
+      "to": "lesson2.rich",
+      "still": "lesson2.middle+2",
+      "hook": "You got a raise and you're still broke? This one picture explains why, in 20 seconds.",
+      "onScreen": "WHY A RAISE ISN'T ENOUGH",
+      "youtube": null
+    },
+    {
+      "n": 3,
+      "slug": "is-your-house-an-asset",
+      "from": "wrong.house",
+      "to": "wrong.house",
+      "still": "wrong.house+2",
+      "hook": "Is your house an asset? A book with 32 million copies sold says no. But which half of that could cost you?",
+      "onScreen": "IS YOUR HOUSE AN ASSET?",
+      "youtube": null
+    },
+    {
+      "n": 4,
+      "slug": "your-car-isnt-an-asset",
+      "from": "lesson2.car",
+      "to": "lesson2.test",
+      "still": "lesson2.car+3",
+      "hook": "Stop calling your car an asset. You lose money on it every month, and Rich Dad Poor Dad has a 1-line test it fails.",
+      "onScreen": "THE 1-LINE TEST",
+      "youtube": null
+    }
+  ]
+}
